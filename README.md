@@ -2,6 +2,13 @@
 
 Toolkit Usage and Python Development by Tobias Hoesli & Marco Colombatti
 
-# 1st Steps 
+# Initial Steps 
 
+1. Tensorflow
+
+```python
+pip install tensorflow
+```
+
+2.
 
