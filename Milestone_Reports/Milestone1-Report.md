@@ -61,8 +61,10 @@
   The Pythons and Dependencies being used for running this script:  
   **Python 3.8.10  
   numpy==1.19.5  
-  tensorflow==2.6.0**
-  ![Results](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/55fed1cee7e34c0be70e3b2455ad044c96827c97/Milestone Reports/images/Results_PythonScript_mnist.png "Results mnist script")
+  tensorflow==2.6.0**  
+
+  Result:  
+  ![Results](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/feature/Milestone_Reports/images/Results_PythonScript_mnist.png)
 
 
 
