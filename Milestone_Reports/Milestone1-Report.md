@@ -16,7 +16,7 @@
   According to the description, the data-set is already normalized so that each picture of a handwritten digit fit in a 20x20 pixel box. In the end the pictures were centered in a
   28x28 pixel grid, providing the final resolution. In many OCR algorithms is normal to filter, resize and normalize multiple times the picture, to improve the precision of the 
   classification algorithm selected. Even if we would capture a high resolution picture and we would have an algorithm to identify how many persons are in the picture, the algorithm
-  would process the picture in a way that would reduce considerably the original resolution with multiple iteration of post-processing.
+  would process the picture in a way that would reduce considerably the original resolution with multiple iteration of post-processing of the image.
 
 ## Task 2
 **Check out the code base assigned to you from GitHub**
