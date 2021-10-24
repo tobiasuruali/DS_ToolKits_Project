@@ -135,9 +135,9 @@
   pixels tend to have similar values, therefore some of the information is redundant. Pooling applies operations like average, maximize, minimize etc to reduce dimensionality.
   This reduce the dimensionality from 26x26X32 to 13*13*32.
   These operations are then run a second time, bringing each varialbe to a value of 5*5*64.
-  However the final goal of this regression model is to associate each picture with a value that ranges from 0 to 9 (so 10 possibilites). 
+  However the final goal of this classification model is to associate each picture with a value that ranges from 0 to 9 (so 10 possibilites). 
   This mapping process happen in the last stage of the model. The result is a probability distribution, where the algorithm assign the probability that each picture is 
-  one of the 10 numbers (in percentage). This allow to see how clear the prediction is expected to be. 
+  one of the 10 numbers (in percentage). This allow to see how clear the prediction is expected to be.
  
   
   
