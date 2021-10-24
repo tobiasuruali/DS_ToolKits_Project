@@ -35,11 +35,23 @@
 **Run the python code**
 
 - **Explain in detail which steps were necessary to run the code**  
-  We run a Ubuntu20.04 Virtual Machine. Firstly we'll need to download python3.8  
+  We run a Ubuntu20.04 Virtual Machine. To set up the virtual machine we use the integrated virtual environment in python, by using the command 
+  ```
+  python3 -m venv "venv" 
+  ```
+  In this case the virtual machine is named venv and is hosted in the home directory, as per default. We can then activate the vm by using the command.
+  ```
+  source env/bin/activate venv 
+  ```
+  We can see now from the terminal that the virtual environment is activated. In our case in the /env directory.
+  To exit the virtual machine we can simply input
+  ```
+  deactivate 
+  ```  
+  Firstly we'll need to download python3.8  
   ```
   sudo apt install python3.8
   ```
-  
   A trial to get the python copying from the original github didn't seem to work. 
   The file ended up being displayed in XML (I assume). Was unrunnable:
   ```
