@@ -2,7 +2,7 @@
 
 Toolkit Usage and Python Development by Tobias Hoesli & Marco Colombatti
 
-# Initial Steps 
+# Build Instructions 
 
 1. ***Tensorflow*** download
 

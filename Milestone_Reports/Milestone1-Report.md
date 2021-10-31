@@ -5,8 +5,7 @@
 
 - **Is it a classification or regression problem?**  
 
-  The problem is a classification problem, where the algorithm is optimized to identify pictures of handwritted digits and the perfomance of this algorithm is determined on the error
-  rate on the test set. The lower the error rate, the better the model performs. It is interesting to notice that this exercise has been running for quite some time, with the first
+  The problem is a classification problem, where the algorithm is optimized to identify pictures of handwritted digits and the perfomance of this algorithm is determined on the error rate on the test set. The lower the error rate, the better the model performs. It is interesting to notice that this exercise has been running for quite some time, with the first
   submissions dating the year 1998. In addition, there are example of both supervised and unsupervised machine learning algorithms.
 
 - **What are the characteristics of the dataset?**    
@@ -116,7 +115,7 @@
  
   The following command load the data. 
   
-  x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+  (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
   
   And the data is downloaded from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
   This import 60,000 points to train the model and 10,000 to test the accuracy of our model (test samples).
@@ -127,18 +126,17 @@
   
   - **What kind of neural network architecture are you dealing with**  
   
-  In this instance we have an example of deep learning model used for Object Character Recognition (OCR).
+  In this instance we have an example of deep learning model used for Object Character Recognition (OCR).  
   We know from the description of the data set that we have a 28x28 pixel image.  
-  We have convulation layers that applies an array of filters in parallel to increase the amount of information each pixel provides. We can see this action in the outpot of the code.
-  (conv2d). This marginally reduce also the shape of the image (26*26). How many filters were applied? 32. 
-  This brings the data set from a 28X28X1 to 26x26X32 
-  To reduce the dimensionality further the model applies MaxPooling2D. Pooling can be seen as zooming out, reducing the resolution. The reason why is possible is that neighboring 
-  pixels tend to have similar values, therefore some of the information is redundant. Pooling applies operations like average, maximize, minimize etc to reduce dimensionality.
-  This reduce the dimensionality from 26x26X32 to 13*13*32.
-  These operations are then run a second time, bringing each varialbe to a value of 5*5*64.
-  However the final goal of this classification model is to associate each picture with a value that ranges from 0 to 9 (so 10 possibilites). 
-  This mapping process happen in the last stage of the model. The result is a probability distribution, where the algorithm assign the probability that each picture is 
-  one of the 10 numbers (in percentage). This allow to see how clear the prediction is expected to be.
+  We have convulation layers that applies an array of filters in parallel to increase the amount of information each pixel provides. We can see this action in the outpot of the code.  
+  **(conv2d)**: This marginally reduce also the shape of the image (26x26). How many filters were applied? 32.   
+  This brings the data set from a 28X28X1 to 26x26x32 
+  To reduce the dimensionality further the model applies MaxPooling2D. Pooling can be seen as zooming out, reducing the resolution. The reason why is possible is that neighboring pixels tend to have similar values, therefore some of the information is redundant.   
+  Pooling applies operations like average, maximize, minimize etc to reduce dimensionality.
+  This reduce the dimensionality from 26x26x32 to 13x13x32.  
+  These operations are then run a second time, bringing each varialbe to a value of 5x5x64.  
+  However the final goal of this classification model is to associate each picture with a value that ranges from 0 to 9 (so 10 possibilites).   
+  This mapping process happen in the last stage of the model. The result is a probability distribution, where the algorithm assign the probability that each picture is one of the 10 numbers (in percentage). This allow to see how clear the prediction is expected to be.  
  
   
   
