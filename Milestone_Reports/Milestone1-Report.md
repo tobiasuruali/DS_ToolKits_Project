@@ -33,9 +33,16 @@
 **Run the python code**
 
 - **Explain in detail which steps were necessary to run the code**  
-  We run a Ubuntu20.04 Virtual Machine. To set up the virtual environment we used the integrated virtual environment in python, by using the command 
+  
+  The recommended set-up takes advantage of the integrated virtual environment in python3.   
+  This requires Python3, which comes pre-installed in most distro, including Ubuntu and its flavors. 
+  To check if Python is installed we can run the command: 
   ```
-  python3 -m venv "venv" 
+   python
+  ```
+  1. If we have python3 we can proceed with the steps below. If not, we would suggest to use the package manager of each distro to install Python3 (e.g. dnf for Fedora, apt Ubuntu, etc.)  
+  ```
+  python3 -m venv venv 
   ```
   In this case the virtual environment is named venv and is hosted in the home directory, as per default.
   We can then activate the virtual environment by using the command.
@@ -43,28 +50,14 @@
   source env/bin/activate venv 
   ```
   We can see now from the terminal that the virtual environment is activated. In our case in the /env directory.
-  To exit the virtual environment we can simply input
+  To exit the virtual environment we can simply input:
   ```
   deactivate 
   ```  
-  Firstly we'll need to download python3.8  
-  ```
-  sudo apt install python3.8
-  ```
-  A trial to get the python copying from the original github didn't seem to work. 
-  The file ended up being displayed in XML (I assume). Was unrunnable:
-  ```
-  wget https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py
-  ```
-  So a CTRL + C of the raw code from the github repo had to suffice. Added new txt. file, pasted the raw code into it, then renamed the file ending.
-  `cat > mnist_convnet.txt`, CTRL + V, `mv mnist_convnet.txt mnist_convnet.py`  
-  Before then running the code we first evaluate the code with our text editor.  
-  1. After Eval, we will need the packages that are listed in the "import" section at the beginning of the code.
-  2. We'll use pip to install all these packages
+  2. We'll use pip to install all these packages. The -m flag makes sure that we are using the pip that is tied to the active Python executable.
     ```
-    sudo apt install pip3 &&
-    pip3 install numpy &&
-    pip3 install tensorflow 
+    python3 -m pip install numpy &&
+    python3 -m pip install tensorflow 
     ```
   3. Run the script
     ```
