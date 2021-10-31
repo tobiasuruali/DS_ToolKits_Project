@@ -26,7 +26,7 @@
   The code is very easy to read, providing info regarding the required packages, how the data is prepared, how the model is trained and evaluated. 
   
 ## Task 3
-**Commit the relevant python file to your Git Repo.
+**Commit the relevant python file to your Git Repo.**
 
 ## Task 4
 
@@ -86,7 +86,7 @@
   ![Results](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/feature/Milestone_Reports/images/Results_PythonScript_mnist.png)
 
 - **Are the versions dependent on the system the code is being run on? (try running it on different machines, by checking out the code onto these machines. Does it work out of the box?)**  
-  No
+  No, as long as python3 is correctly installed on the Users machine or OS there is no difference in dependencies. Especially when working with python3's venv there should be no complications regardless of OS.
 
 ## Task 5  
 **Explain what the code does**  
