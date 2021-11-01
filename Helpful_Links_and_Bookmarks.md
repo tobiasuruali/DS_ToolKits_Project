@@ -29,3 +29,8 @@ https://stackoverflow.com/questions/24764549/upgrade-python-packages-from-requir
 https://linuxize.com/post/how-to-configure-git-username-and-email/
 ### Deleting Git Branch
 https://linuxize.com/post/how-to-delete-local-and-remote-git-branch/
+
+## Docker
+### Setting up and Downloading Docker
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+https://linuxhint.com/install_configure_docker_ubuntu/
