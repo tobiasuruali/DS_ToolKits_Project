@@ -20,3 +20,17 @@ find . -size +1G -printf '%P\n' >> .gitignore;
 https://medium.com/analytics-vidhya/efficient-way-to-activate-conda-in-vscode-ef21c4c231f2  
 https://medium.com/@udiyosovzon/how-to-activate-conda-environment-in-vs-code-ce599497f20d
 
+## Upgrade Packages from requirements.txt file
+https://stackoverflow.com/questions/24764549/upgrade-python-packages-from-requirements-txt-using-pip-command
+
+
+## Git
+### Define UserName and UserEmail
+https://linuxize.com/post/how-to-configure-git-username-and-email/
+### Deleting Git Branch
+https://linuxize.com/post/how-to-delete-local-and-remote-git-branch/
+
+## Docker
+### Setting up and Downloading Docker
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+https://linuxhint.com/install_configure_docker_ubuntu/
