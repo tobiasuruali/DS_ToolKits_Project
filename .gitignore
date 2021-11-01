@@ -1,4 +1,4 @@
-# Gitignore consisting of: vim,macos,linux,python,windows,pycharm,pycharm+all,visualstudio,microsoftoffice,visualstudiocode,jupyternotebooks,executable
+# Gitignore consisting of: vim,macos,linux,python,windows,pycharm,pycharm+all,visualstudio,microsoftoffice,visualstudiocode,jupyternotebooks,executable,virtualenv
 
 # Created by https://www.toptal.com/developers/gitignore/api/vim,macos,linux,python,windows,pycharm,pycharm+all,visualstudio,microsoftoffice,visualstudiocode,jupyternotebooks,executable
 # Edit at https://www.toptal.com/developers/gitignore?templates=vim,macos,linux,python,windows,pycharm,pycharm+all,visualstudio,microsoftoffice,visualstudiocode,jupyternotebooks,executable
@@ -838,3 +838,16 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
