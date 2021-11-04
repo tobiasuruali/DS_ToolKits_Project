@@ -77,7 +77,23 @@ model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_spl
 ## Evaluate the trained model
 """
 
-score = model.evaluate(x_test, y_test, verbose=0)
-print("Test loss:", score[0])
-print("Test accuracy:", score[1])
+# score = model.evaluate(x_test, y_test, verbose=0)
+# print("Test loss:", score[0])
+# print("Test accuracy:", score[1])
 
+
+
+# Calling `save('my_model.h5')` creates a h5 file `my_model.h5`.
+model.save("keras_model.h5")
+
+# It can be used to reconstruct the model identically.
+reconstructed_model = keras.models.load_model("keras_model.h5")
+
+# Let's check:
+np.testing.assert_allclose(
+    model.predict(x_train), reconstructed_model.predict(x_train)
+)
+
+# The reconstructed model is already compiled and has retained the optimizer
+# state, so training can resume:
+reconstructed_model.fit(x_train, y_train)
