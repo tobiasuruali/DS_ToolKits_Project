@@ -96,4 +96,4 @@ np.testing.assert_allclose(
 
 # The reconstructed model is already compiled and has retained the optimizer
 # state, so training can resume:
-reconstructed_model.fit(x_train, y_train)
+reconstructed_model.fit(x_train, y_train) 

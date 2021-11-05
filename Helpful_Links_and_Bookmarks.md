@@ -34,3 +34,17 @@ https://linuxize.com/post/how-to-delete-local-and-remote-git-branch/
 ### Setting up and Downloading Docker
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 https://linuxhint.com/install_configure_docker_ubuntu/
+
+## Keras
+
+### Saving Models (H5 Files as well)
+https://www.tensorflow.org/guide/keras/save_and_serialize
+
+
+## Pip Requirements
+
+### Creating Pip Requirements
+https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+
+### Upgrade all packages 
+https://github.com/simion/pip-upgrader
