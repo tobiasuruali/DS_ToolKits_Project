@@ -1,6 +1,6 @@
 import numpy as np
-import tensorflow as keras
-import tensorflow.keras as layers 
+from tensorflow import keras
+from tensorflow.keras import layers 
 
 """
 ## Build the model
