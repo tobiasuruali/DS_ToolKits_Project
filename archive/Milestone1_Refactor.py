@@ -84,16 +84,6 @@ def train_model(x_train, y_train, model):
 
 train_model(x_train, y_train, model)
 
-"""
-## Evaluate the trained model
-"""
-
-def evaluate_model(x_test, y_test, model):
-    score = model.evaluate(x_test, y_test, verbose=0)
-    print("Test loss:", score[0])
-    print("Test accuracy:", score[1])
-
-evaluate_model(x_test, y_test, model)
 
 """
 ## Save the model
@@ -108,16 +98,27 @@ save_model(model)
 
 def load_model():
     # load_model can then reconstruct the model identically
-    reconstructed_model = keras.models.load_model("keras_model.h5")
-    return reconstructed_model
+    loaded_model = keras.models.load_model("keras_model.h5")
+    return loaded_model
 
-reconstructed_model = load_model()
+loaded_model = load_model()
 
 # Check Reconstructed models performance
 np.testing.assert_allclose(
-    model.predict(x_train), reconstructed_model.predict(x_train)
+    model.predict(x_train), loaded_model.predict(x_train)
 )
 
 # The reconstructed model is already compiled and has retained the optimizer
 # state, so training can resume:
-reconstructed_model.fit(x_train, y_train) 
+loaded_model.fit(x_train, y_train) 
+
+"""
+## Evaluate the loaded model on test data
+"""
+
+def evaluate_loaded_model(x_test, y_test, loaded_model):
+    score = loaded_model.evaluate(x_test, y_test, verbose=0)
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
+
+evaluate_loaded_model(x_test, y_test, loaded_model)

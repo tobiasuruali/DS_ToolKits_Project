@@ -73,13 +73,6 @@ model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accur
 
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
 
-"""
-## Evaluate the trained model
-"""
-
-score = model.evaluate(x_test, y_test, verbose=0)
-print("Test loss:", score[0])
-print("Test accuracy:", score[1])
 
 """
 ## Save the Model
@@ -90,13 +83,24 @@ print("Test accuracy:", score[1])
 model.save("keras_model.h5")
 
 # It can be used to reconstruct the model identically.
-reconstructed_model = keras.models.load_model("keras_model.h5")
+loaded_model = keras.models.load_model("keras_model.h5")
 
 # Let's check:
 np.testing.assert_allclose(
-    model.predict(x_train), reconstructed_model.predict(x_train)
+    model.predict(x_train), loaded_model.predict(x_train)
 )
 
 # The reconstructed model is already compiled and has retained the optimizer
 # state, so training can resume:
-reconstructed_model.fit(x_train, y_train) 
+loaded_model.fit(x_train, y_train) 
+
+"""
+## Evaluate the saved model
+"""
+
+def evaluate_loaded_model(x_test, y_test, loaded_model):
+    score = loaded_model.evaluate(x_test, y_test, verbose=0)
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
+
+evaluate_loaded_model(x_test, y_test, loaded_model)

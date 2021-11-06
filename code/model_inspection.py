@@ -1,19 +1,6 @@
 from tensorflow import keras
 
 """
-## Evaluate the trained model
-"""
-
-def evaluate_model(x_test, y_test, model):
-    score = model.evaluate(x_test, y_test, verbose=0)
-    print("Test loss:", score[0])
-    print("Test accuracy:", score[1])
-
-# Function Call example
-# evaluate_model(x_test, y_test, model)
-
-
-"""
 ## Save the trained model
 """
 
@@ -30,8 +17,20 @@ def save_model(model):
 
 def load_model():
     # load_model can then reconstruct the model identically
-    reconstructed_model = keras.models.load_model("keras_model.h5")
-    return reconstructed_model
+    loaded_model = keras.models.load_model("keras_model.h5")
+    return loaded_model
 
 # Function call example
-# reconstructed_model = load_model()
+# loaded_model = load_model()
+
+"""
+## Evaluate the loaded model on test data
+"""
+
+def evaluate_loaded_model(x_test, y_test, loaded_model):
+    score = loaded_model.evaluate(x_test, y_test, verbose=0)
+    print("Test loss:", score[0])
+    print("Test accuracy:", score[1])
+
+# Function call example
+# evaluate_loaded_model(x_test, y_test, loaded_model)
