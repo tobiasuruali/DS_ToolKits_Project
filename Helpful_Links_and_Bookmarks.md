@@ -46,3 +46,14 @@ https://medium.com/python-pandemonium/better-python-dependency-and-package-manag
 
 ### Upgrade all packages 
 https://github.com/simion/pip-upgrader
+
+
+## Python
+
+### PEP8 Style
+https://www.python.org/dev/peps/pep-0008/#naming-conventions
+https://realpython.com/python-pep8/
+
+### Modules and Init
+https://docs.python.org/3/tutorial/modules.html
+https://www.digitalocean.com/community/tutorials/how-to-write-modules-in-python-3
