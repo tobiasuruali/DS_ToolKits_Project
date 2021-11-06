@@ -1,3 +1,4 @@
+import numpy as np
 import tensorflow as keras
 import tensorflow.keras as layers 
 
