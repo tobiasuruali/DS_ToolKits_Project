@@ -98,9 +98,7 @@ loaded_model.fit(x_train, y_train)
 ## Evaluate the saved model
 """
 
-def evaluate_loaded_model(x_test, y_test, loaded_model):
-    score = loaded_model.evaluate(x_test, y_test, verbose=0)
-    print("Test loss:", score[0])
-    print("Test accuracy:", score[1])
+score = loaded_model.evaluate(x_test, y_test, verbose=0)
+print("Test loss:", score[0])
+print("Test accuracy:", score[1])
 
-evaluate_loaded_model(x_test, y_test, loaded_model)
