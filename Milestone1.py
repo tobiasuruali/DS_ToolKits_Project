@@ -77,10 +77,13 @@ model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_spl
 ## Evaluate the trained model
 """
 
-# score = model.evaluate(x_test, y_test, verbose=0)
-# print("Test loss:", score[0])
-# print("Test accuracy:", score[1])
+score = model.evaluate(x_test, y_test, verbose=0)
+print("Test loss:", score[0])
+print("Test accuracy:", score[1])
 
+"""
+## Save the Model
+"""
 
 
 # Calling `save('my_model.h5')` creates a h5 file `my_model.h5`.
