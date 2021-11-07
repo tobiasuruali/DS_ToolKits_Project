@@ -99,7 +99,7 @@ In future use, regardless of what OS or Image someone is utilizing, when running
   ```
    sudo systemctl start docker.service
   ``` 
-  This will run with root privileges in the Docker service. It is usually not recommended to run an app with root privileges, but for me, it was the only way to solve the problem "Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running? errors pretty printing info".
+  -This will run with root privileges in the Docker service. It is usually not recommended to run an app with root privileges, but for me, it was the only way to solve the problem "Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running? errors pretty printing info".
   The steps I describe now are not necessary by themselves for task 6 itself but are a part of getting to know better Docker. 
   We can have additional info on our installation on Docker by running the command:
   ```
