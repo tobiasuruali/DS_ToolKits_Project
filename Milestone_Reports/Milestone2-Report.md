@@ -79,9 +79,20 @@ run with the "python" command.
 - Ensure PEP8 conformity
 
 ## Task 5 Pip Requirements File
-Create a pip "requirements file" for your code base and explain how you make it work within a virtualenv
-(step by step).
-Did you have to install virtualenv?
+
+To create a requirements file at first code on the stackoverflow suggested while being in a virutal environment to `pip freeze -> requirements.txt` but this ended up creating a big requirements file, including all packages already preinstalled in a python environment. 
+
+On pipy we then discovered **pipreqs**. Pipreqs analyzes a specific directory defined in the command, and analyzes what packages are actually being used inside the directories script. It then writes a requirements.txt into that directory with only **essential** packages to run the code.
+
+````
+pipreqs /code 
+````
+
+**matplotlib==3.1.2  
+tensorflow==2.7.0  
+numpy==1.19.2**
+
+In future use, regardless of what OS or Image someone is utilizing, when running `pip install requirements.txt` for example. The code will run with the right required packages.  
 
 ## Task 6 Dockerizing
   - The first step was to install Docker on our machines. Based on the distro there are different installation possibilities. After we can run the command on our Linux terminal:
