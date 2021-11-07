@@ -45,10 +45,11 @@ def predict_on_data(x_test, y_test, loaded_model):
 #Plot Predicitions vs their actual numbers
     print('Showcase to evaluate predictions:')
     for i, number in enumerate(random_numbers):
-        plt.imshow(x_test[random_numbers[i]], cmap=plt.get_cmap('gray'))
-        plt.show()
         print('[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]')
         print(y_test[random_numbers[i]])
+        plt.imshow(x_test[random_numbers[i]], cmap=plt.get_cmap('gray'))
+        plt.show()
+
 
 # Example for function call up
 # predict_on_data(x_test, y_test, loaded_model)
