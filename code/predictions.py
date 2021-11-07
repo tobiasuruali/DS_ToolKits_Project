@@ -47,8 +47,8 @@ def predict_on_data(x_test, y_test, loaded_model):
     for i, number in enumerate(random_numbers):
         print('[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]')
         print(y_test[random_numbers[i]])
-        plt.imshow(x_test[random_numbers[i]], cmap=plt.get_cmap('gray'))
-        plt.show()
+        # plt.imshow(x_test[random_numbers[i]], cmap=plt.get_cmap('gray'))
+        # plt.show()
 
 
 # Example for function call up
