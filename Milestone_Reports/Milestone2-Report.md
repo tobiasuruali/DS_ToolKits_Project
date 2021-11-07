@@ -1,8 +1,32 @@
 # Milestone 2 
 
 ## Task 1 Git Commit Copying
-Git Cherry Picking:
+The .gitignore file was created quite early and additions needed to be made every once in a while due to applications, different OS's and functionalities added (such as python venv's).
+While working on different branches being able to obtain changes on various files such as .gitignore, we made use of `git cherry-pick` functionality.
 
+1. checkout the wanted branch and commits of that branch.
+If you wanted to see the specific changes made on that commit use `git log -p`
+````
+git checkout milestone2_marco
+````
+````
+git log
+````
+2. Now copy the hash of the specific commit you want to add to your branch and then add it to your branch. Make sure you change to your original branch first
+````
+git checkout milestone2_feature
+````
+````
+git cherry-pick 0d71863a
+````
+
+If you just wanted to change a specific file (in our case *.gitignore*) and the specific commit has various changes on multiple files. There's a work around to adding those changes to your tree:
+
+````
+git diff mileston2_feature milestone2_marco ./.gitignore | git apply
+````
+
+In our case there were never conflicts but it's better practice incase there's no major changes to specific branches to just merge the branches to avoid further possible conflict
 
 ## Task 2 Questions
 Add the answers to the following questions to your report:
