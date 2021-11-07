@@ -78,6 +78,44 @@ run with the "python" command.
 - The modules are only allowed to contain imports and functions (for example "def create_neuralnet(): ...")
 - Ensure PEP8 conformity
 
+Modulization of code was made trying to keep the logic of the initial script in mind.
+We decided to go for a modul structure like this:  
+- **data_preparation.py**  - For preparing the data and initialising the variables   
+- **build_model.py**  for building and training the model
+- **model_inspection.py**  saves, loads a model and evaluates it 
+- **prediction.py**  predicting on a given set of data
+- ***main.py***  runs the whole script
+
+Naming was created ensuring PEP8 conformity with lowercases.  
+### data_preparation
+
+- functions:  
+def prepare_data() - Defines number of classes, input_shape, train and  test data
+### build model 
+- functions:
+def build_model(num_classes, input_shape) - creates our keras model  
+def train_model(x_train, y_train, model) - trains the model on given training data  
+### model_inspection
+- functions:
+def save_model(model) - Saves the just created model as an .h5 file  
+def load_model() - Loads the model with the given name  
+def evaluate_loaded_model(x_test, y_test, loaded_model) - evaluates Model's Test loss and accuracy  
+### prediction
+- functions:
+def predict_on_data(x_test, y_test, loaded_model) - Predicts the the number of given image dataset and saves it in an array. Added 5 random number visualization as well to show prediction accuracy 
+### main
+````
+if __name__ == "__main__":
+    num_classes, input_shape, x_train, y_train, x_test, y_test = data_preparation.prepare_data()
+    model = build.build_model(num_classes, input_shape)
+    build.train_model(x_train, y_train, model)
+    inspection.save_model(model)
+    loaded_model = inspection.load_model()
+    inspection.evaluate_loaded_model(x_test, y_test, loaded_model)
+    predictions.predict_on_data(x_test, y_test, loaded_model)
+```` 
+
+
 ## Task 5 Pip Requirements File
 
 To create a requirements file at first code on the stackoverflow suggested while being in a virutal environment to `pip freeze -> requirements.txt` but this ended up creating a big requirements file, including all packages already preinstalled in a python environment. 

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import random
 import build_model
 
+## For script testing purposes 
 # num_classes, input_shape, x_train, y_train, x_test, y_test = data_preparation.prepare_data()
 # loaded_model = model_inspection.load_model()
 
