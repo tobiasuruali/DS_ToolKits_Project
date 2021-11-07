@@ -57,26 +57,16 @@ In our case there were never conflicts but it's better practice incase there's n
 
 ## Task 3 Code Functionalities 
 
-Make sure your code has the following functionality (extend if necessary):
-- Can load data
-- Can train (fit) a neural network on the data
-- Can save a fitted model to a ".h5" file
-- Can load a ".h5" file, using Keras
-- Can perform predictions using a "fitted" model, using Keras
+
+Added functionality to save and load a model inside **model_inspection.py** and prediction functionality added in module **predictions.py**
+
+We attempted to implement a visualization of prediction an given photo through matplotlib pyplot package. But since docker images don't necessarily have GUI functionality, we encountered tons of errors trying to visualize the analyzed fotos. We tried to download python-tk3 and other matplotlib GUI visualization packages which helped up visualize it on our local Ubuntu machines. But on docker those same hotfixes didn't seem to work.
+
+For reference, check out **Loaded_Model_Eval.ipynb**, there it works perfectly.
+ 
 
 
 ## Task 4 Seperating Code into Modules
-Your code bases are badly structured, as they are essentially a script, which is read top down. This creates
-Python files that are large and not maintainable. It is good practice to create modules that contain code
-snippets which "logically" belong together. The modules contain python functions that are imported by other
-modules and scripts, where they are executed.
-- Split your code base into modules (for example the creation of the neural network might be in a
-"neuralnet_architecture.py" module). Explain the reasoning behind your modularization. Why did you choose
-to structure the code like this?
-- There has to be one "main.py" script that calls the code in all the other modules. This is the script that you
-run with the "python" command.
-- The modules are only allowed to contain imports and functions (for example "def create_neuralnet(): ...")
-- Ensure PEP8 conformity
 
 Modulization of code was made trying to keep the logic of the initial script in mind.
 We decided to go for a modul structure like this:  
