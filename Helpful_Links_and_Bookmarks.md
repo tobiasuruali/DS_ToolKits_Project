@@ -16,12 +16,10 @@ OR
 find . -size +1G -printf '%P\n' >> .gitignore;
 ````
 
-## Running Anaconda Env as default in VSCode
+## Running python env & conda env as default in VSCode (not relevant anymore)
+https://code.visualstudio.com/docs/python/environments
 https://medium.com/analytics-vidhya/efficient-way-to-activate-conda-in-vscode-ef21c4c231f2  
 https://medium.com/@udiyosovzon/how-to-activate-conda-environment-in-vs-code-ce599497f20d
-
-## Upgrade Packages from requirements.txt file
-https://stackoverflow.com/questions/24764549/upgrade-python-packages-from-requirements-txt-using-pip-command
 
 
 ## Git
@@ -34,3 +32,31 @@ https://linuxize.com/post/how-to-delete-local-and-remote-git-branch/
 ### Setting up and Downloading Docker
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 https://linuxhint.com/install_configure_docker_ubuntu/
+
+### UI for matplotlib
+https://stackoverflow.com/questions/64252361/tkinter-install-in-docker
+https://stackoverflow.com/questions/46018102/how-can-i-use-matplotlib-pyplot-in-a-docker-container
+## Keras
+
+### Saving Models (H5 Files as well)
+https://www.tensorflow.org/guide/keras/save_and_serialize
+
+
+## Pip Requirements
+
+### Creating Pip Requirements
+https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+
+### Upgrade all packages 
+https://github.com/simion/pip-upgrader
+
+
+## Python
+
+### PEP8 Style
+https://www.python.org/dev/peps/pep-0008/#naming-conventions
+https://realpython.com/python-pep8/
+
+### Modules and Init
+https://docs.python.org/3/tutorial/modules.html
+https://www.digitalocean.com/community/tutorials/how-to-write-modules-in-python-3

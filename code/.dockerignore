@@ -1,0 +1,6 @@
+*.md 
+*.h5
+*.ipynb
+*.png
+.gitignore
+archive
