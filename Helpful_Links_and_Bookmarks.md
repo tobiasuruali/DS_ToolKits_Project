@@ -33,6 +33,9 @@ https://linuxize.com/post/how-to-delete-local-and-remote-git-branch/
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 https://linuxhint.com/install_configure_docker_ubuntu/
 
+### UI for matplotlib
+https://stackoverflow.com/questions/64252361/tkinter-install-in-docker
+https://stackoverflow.com/questions/46018102/how-can-i-use-matplotlib-pyplot-in-a-docker-container
 ## Keras
 
 ### Saving Models (H5 Files as well)
