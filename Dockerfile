@@ -7,7 +7,6 @@ RUN pip install -r requirements.txt
 WORKDIR /app
 COPY . /app
 
-RUN ls -la
-RUN pwd
+# RUN ls -la
+# RUN pwd
 CMD ["python", "/app/code/main.py"]
-# CMD ["python", "Test.py"]
