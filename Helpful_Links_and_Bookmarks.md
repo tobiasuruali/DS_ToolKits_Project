@@ -36,6 +36,17 @@ https://linuxhint.com/install_configure_docker_ubuntu/
 ### UI for matplotlib
 https://stackoverflow.com/questions/64252361/tkinter-install-in-docker
 https://stackoverflow.com/questions/46018102/how-can-i-use-matplotlib-pyplot-in-a-docker-container
+
+### Docker Volumes and Data management
+https://www.digitalocean.com/community/tutorials/how-to-share-data-between-the-docker-container-and-the-host
+https://docs.docker.com/storage/
+#### Best one: Sharing Data with multiple containers & Dockerfile
+https://www.ionos.com/digitalguide/server/know-how/docker-container-volumes
+
+````
+docker run -d -p 80:80 docker/getting-started
+````
+
 ## Keras
 
 ### Saving Models (H5 Files as well)
