@@ -47,6 +47,9 @@ https://www.ionos.com/digitalguide/server/know-how/docker-container-volumes
 docker run -d -p 80:80 docker/getting-started
 ````
 
+### Running Docker Container on built image with volume
+docker run -d --name=ds_test_docker -v volumes:/volumes dstoolkitsproject:latest
+
 ## Keras
 
 ### Saving Models (H5 Files as well)

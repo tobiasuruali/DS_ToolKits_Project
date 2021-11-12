@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dstoolkitsproject:
+    image: dstoolkitsproject
+    build:
+      context: .
+      dockerfile: ./Dockerfile
