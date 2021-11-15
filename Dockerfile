@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow
+FROM tensorflow/tensorflow:2.7.0
 
 COPY requirements.txt ./
 RUN pip install --upgrade pip
