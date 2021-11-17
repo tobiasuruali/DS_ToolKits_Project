@@ -47,6 +47,16 @@ https://www.ionos.com/digitalguide/server/know-how/docker-container-volumes
 docker run -d -p 80:80 docker/getting-started
 ````
 
+### Postgres Docker
+linuxhint.com/postgresql_docker
+https://towardsdatascience.com/how-to-run-postgresql-and-pgadmin-using-docker-3a6a8ae918b5
+### Troubleshoot Permission denial
+https://stackoverflow.com/questions/64781245/permission-denied-var-lib-pgadmin-sessions-in-docker
+
+```
+hostname -I
+```
+
 ### Running Docker Container on built image with volume
 docker run -d --name=ds_test_docker -v volumes:/volumes dstoolkitsproject:latest
 
@@ -74,3 +84,8 @@ https://realpython.com/python-pep8/
 ### Modules and Init
 https://docs.python.org/3/tutorial/modules.html
 https://www.digitalocean.com/community/tutorials/how-to-write-modules-in-python-3
+
+### PostgreSQL with PYTHON
+https://www.tutorialspoint.com/python_data_access/python_postgresql_database_connection.htm
+
+
