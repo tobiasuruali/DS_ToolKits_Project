@@ -9,11 +9,14 @@ conn.autocommit = True
 #Creating a cursor object using the cursor() method
 cursor_create = conn.cursor()
 
-#Preparing query to create a database
-sql_create_db = '''CREATE database ms3_jokes''';
+#Check if DB already exists if not, then Create
+# cursor.execute('''DROP DATABASE IF EXISTS ms3_jokes''')
+cursor_create.execute("SELECT 1 FROM pg_catalog.pg_database WHERE datname = 'ms3_jokes'")
+exists = cursor_create.fetchone()
+if not exists:
+    cursor_create.execute('''CREATE DATABASE ms3_jokes''')
 
-#Creating a database
-cursor_create.execute(sql_create_db)
+
 #So DB can be created in transaction block
 
 print("Database created successfully........")
