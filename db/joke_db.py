@@ -11,7 +11,7 @@ print(len(joke_list))
 """ Creating DB -> Shifted to seperate script
 #make connection
 conn = psycopg2.connect(
-   database="postgres", user='admin', password='secret', host='172.17.0.1', port= '5432'
+   database="postgres", user='admin', password='secret', host='localhost', port= '5432'
 )
 conn.autocommit = True
 
@@ -33,7 +33,7 @@ conn.close()
 
 #make connection
 conn = psycopg2.connect(
-   database="ms3_jokes", user='admin', password='secret', host='172.17.0.1', port= '5432'
+   database="ms3_jokes", user='admin', password='secret', host='localhost', port= '5432'
 )
 
 
