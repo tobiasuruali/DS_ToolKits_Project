@@ -1,7 +1,7 @@
 import numpy as np
 import psycopg2
 import pickle
-from tensorflow import keras
+# from tensorflow import keras
 
 #make connection
 conn = psycopg2.connect(
@@ -25,16 +25,17 @@ cursor.execute(
     """
 )
 
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+# (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+x_train = np.random.rand(1500,550)
 
-
-some_array_uuid = 'some_array'
+id = '1'
+name = 'Training Set X'
 
 cursor.execute(
     """
-    INSERT INTO numpy_arrays(id, name, x_test_set)
-    VALUES (1,'Training Set X' ,%s)
+    INSERT INTO input_data (id, name, x_test_set)
+    VALUES (%s,%s,%s)
     """,
-    (pickle.dumps(x_train))
+    (id, name, pickle.dumps(x_train))
 )
 
