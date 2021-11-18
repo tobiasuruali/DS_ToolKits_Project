@@ -11,9 +11,9 @@ services:
       POSTGRES_PASSWORD: secret
       PGDATA: /var/lib/postgresql/data
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./db-data:/var/lib/postgresql/data
       #copying script to initialize table
-      - db-data/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+      - ./db-data/create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
     ports:
       - "5432:5432"
  
@@ -28,7 +28,7 @@ services:
     ports:
       - "5050:80"
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin-data:/var/lib/pgadmin
     links:
       - "db:pgsql-server"
 
