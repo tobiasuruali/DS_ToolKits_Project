@@ -12,7 +12,7 @@ conn = psycopg2.connect(
 cursor = conn.cursor()
 
 #Droping Table if already exists
-cursor.execute("DROP TABLE IF EXISTS input_data")
+#cursor.execute("DROP TABLE IF EXISTS input_data")
 
 cursor.execute(
     """
