@@ -1,25 +1,49 @@
+# Milestone 3
 ## Task 1 Docker-Compose
 
-- Which services are being used for the application (described in the link above)? How do they relate
-  - 
-to the host names in terms of computer networks?
-- What ports are being used (within the application and in the docker-compose file)?
-- How does the host machine (e.g. your computer) communicate with the application inside the
-Docker container. Which ports are exposed from the application to the host machine?
-- What is localhost, why is it useful in the domain of web applications?
+**Which services are being used for the application (described in the link above)? How do they relate to the host names in terms of computer networks?**
+
+- Short answer, web and redis are the services used by the application. Web allows the docker contained application and the local machine to use the exposed port. Redis load the redis image, to be used as a data structure server. They use the ip address 127.0.0.1, the localhost. They communicate by using the exposed port 5000. The dockerized application run locally on the machine, and we can access though the local host directory at the port 5000. 
+- In details, the link https://docs.docker.com/compose/gettingstarted/ shows how to leverage docker to create a small application running in a docker environment and accesible through the local network. It contains the following elements: a simple application written in Python, a dockerfile, a docker-compose and the requirements.
+- The application defines what will happen, after we access to the exposed port. It is a counter on how many times we have accessed the port. The dockerfile specify which docker image to build. This allows us to load predefined environments (in this case python:3.7-alpine), the requirements and the port to be used. This will ensure that all the dependencies are correctly loaded. The docker-compose allows us to manage all the services for Docker. In this example, web and redis. With the compose up command, the aformentioned services and the dockerfile are started. 
+
+**What ports are being used (within the application and in the docker-compose file)?**
+
+- The port 5000 is used by the dockerfile and the dockercompose. The Flask web server uses the same port. The redis service uses port 6379. 
+
+**How does the host machine (e.g. your computer) communicate with the application inside the Docker container. Which ports are exposed from the application to the host machine?**
+
+- The host machine, in my example my laptop have stored locally the necessary information to pull from the internet a dockerized environment, wiht all the necessary dependencies. As long as I can join the localhost at the exposed port 5000 (http://localhost:5000 or the equivalent http://127.0.0.1:5000/ ), I can interact with the dockerized application. 
+
+**What is localhost, why is it useful in the domain of web applications?**
+- Localhost refers to the device we are using. If we are on our laptop it would be the laptop. It is the default name used to establish a connection from our device. The default address is 127.0.0.1 (usually, but the range goes from 127.0.0.0 to 127.255.255.255). It is useful because this range of ip addresses are reserved for loopback communication, so that we can only connect to our local machine. It is often used for testing web applications, like in our docker-compose example.  
 
 ## Task 2 PostgreSQL & JokesDB
 
-What is PostgreSQL? Is it SQL or no-SQL (why?)
+**What is PostgreSQL? Is it SQL or no-SQL (why?)**
 
-- If you stopped and deleted the Docker container running the database and restarted it. Would your
-joke still be in the database? Why or why not?
+- PostgreSQL is an open source object-relational database system, based on SQL (Structured Query Language), with a strong focus on data integrity and reliability. In PostgreSQL, data is often stored as a table. It follows SQL standards albeit in some scenarios there might be difference in syntax. It allows to define new data types, write code in several programming language (including python) and build custom functions. With PostgreSQL we can create, maintain, update and query a relational database. 
+- A no-sql database system (like MongoDB) tackle a different necessity, where it is more important to access in a short time to large data set, at the expense of data reliability and consistency (e.g. an entry might not be unique). Usually no-sql databases don't use tables to store data but document, key-value, graph, or wide-column stores. NoSQL databases are non-relational, with dynamic schemas to store unstructured data. 
 
+**Run a PostgreSQL Server (current version is 14.0) using a Docker image from the official PostgreSQL Docker Hub page**
+
+**If you stopped and deleted the Docker container running the database and restarted it. Would your joke still be in the database? Why or why not?** 
+- Yes, it would be available locally on our machines. This is based on how we set up the docker-compose script. In our setup the database use the following volume.: 
+  
+volumes:
+      - db-data:/var/lib/postgresql/data 
+- As mentioned in the official docker documentation (https://docs.docker.com/storage/volumes/) a volume is the official way for persisting data generated by and used by Docker containers. If we needed to have large volumes of data, maybe even different from a normal SQL table, there would be more efficient way to store data, like the Amazon S3 service. In our scenario, where we have only a table of jokes, storing it in a database is enough. 
+If we were not using volumes, by stopping and deleting the Docker container, the database would be lost. 
 ## Task 3 Save Image into Database
 
-- How do you need to represent/transform image data to save it to a relational database?
+**How do you need to represent/transform image data to save it to a relational database?**
 
-- Describe Process and Difficulties:
+- Relational database are not ideal to store images. A better way to store pictures in a database is to save the pictures on a separate data container and then reference them in the database. In this way, it is possible to avoid 2 major drawbacks: 
+1) It is not efficient, as relational databases like PostgreSQL are not optimized for pictures.
+2) You loose many of the functionalities of a relational databases, by storing the pictures directly in a BLOB field (Binary Large Object)
+
+
+**Describe Process and Difficulties**
 
 - Look at your own dataset:
 1. How is your data structured (you can download and load it from the source. Some of you may use
