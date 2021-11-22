@@ -61,7 +61,7 @@ VALUES (%s, %s)
     conn.commit()
 ```
 
-To then the if the database was filled, we open pgadmin (http://localhost:5050), connect to the database server and write a quick SELECT statement like so:
+To then the if the database was filled, we open pgadmin (http://localhost:5050), connect to the database server and write a quick SELECT statement like the following:
 
   ![JokesDB in PG Admin](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/ce22e6eff2916e0599e978fa006b47b3ba2bc755/Milestone_Reports/images/jokes_select_db.PNG)
 
@@ -102,7 +102,39 @@ Since our MNIST image samples are pretty small, we can save them as either **BYT
 
 1. How is your data structured (you can download and load it from the source. Some of you may use the Keras function to download it).
 
-- 
+- For the images database we decided to use our current MNIST dataset of hand written digits. We load it with the help of Keras, the images are stored as multi dimensional numpy arrays with multiple records. We reshape it to a 28x28x1 dimensional array and select one single picture by random as such:
+````
+#define random Number and select that img from dataset
+    random_single_number = random.randint(0,9999)
+    random_plus_one = random_single_number + 1 
+    print('Random number selected in array:', random_single_number)
+    random_img_x = x_test[random_single_number:random_plus_one]
+    squeezed_random_img_x = np.squeeze(x_test[random_single_number:random_plus_one], axis=0)
+    print('Shape random img: ', random_img_x.shape, 'Shape random img squeezed:', squeezed_random_img_x.shape)
+    return random_img_x, squeezed_random_img_x
+````
+
+  - Firstly, we create a table for our images to be stored with the help of psycopg2
+  - Then we load a random image (in form of a nparray) from the *db_data_prep.random_img_sample() function and module. 
+  - The selected image then get loaded into the *image* table with help of serialization (**pickle**).
+  - With help of the timestamp, a select statement can be run (to receive the latest entry). Python' **pickle** helps us to de-serialize the data and we can then either show or save the images with the help of pyplot. To *imsave* the image you will have assure that the image is a 2D np array.:
+  
+````
+#now compare the 2 photos
+    two_d = (np.reshape(squeezed_random_img_x, (28, 28)) * 255).astype(np.uint8)
+    plt.imsave(fname="test_inserted_photo.png",arr= two_d, cmap=plt.get_cmap('gray'))
+
+    two_d = (np.reshape(img_from_db, (28, 28)) * 255).astype(np.uint8)
+    plt.imsave(fname="test_readDB_photo.png",arr= two_d, cmap=plt.get_cmap('gray'))
+    
+#in case you have pyplot and UI enabled on your machine you can also run plt.imshow()
+    # plt.imshow(squeezed_random_img_x, cmap=plt.get_cmap('gray'))
+    # plt.show()
+    # plt.imshow(img_from_db, cmap=plt.get_cmap('gray'))
+    # plt.show()
+
+````
+
 
 2. Explain how you would define your relational database tables in terms of their attributes to save your data. What kind of data types could you use
 (https://www.postgresql.org/docs/12/datatype.html) 

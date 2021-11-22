@@ -94,7 +94,12 @@ def insert_random_image():
 
     two_d = (np.reshape(img_from_db, (28, 28)) * 255).astype(np.uint8)
     plt.imsave(fname="test_readDB_photo.png",arr= two_d, cmap=plt.get_cmap('gray'))
-
+    
+#in case you have pyplot and UI enabled on your machine you can also run plt.imshow()
+    # plt.imshow(squeezed_random_img_x, cmap=plt.get_cmap('gray'))
+    # plt.show()
+    # plt.imshow(img_from_db, cmap=plt.get_cmap('gray'))
+    # plt.show()
 
     print(img_from_db.shape)
     print(random_img_x.shape)
