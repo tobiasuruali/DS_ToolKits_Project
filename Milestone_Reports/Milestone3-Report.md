@@ -95,11 +95,15 @@ Since our MNIST image samples are pretty small, we can save them as either **BYT
 
 - 
 
-1. Explain how you would define your relational database tables in terms of their attributes to save your data. What kind of data types could you use
+2. Explain how you would define your relational database tables in terms of their attributes to save your data. What kind of data types could you use
 (https://www.postgresql.org/docs/12/datatype.html) 
+- For the image id and the prediction id, we utilize integers. They have a limit in range but this would never be a problem in our small application. In addition, it is easy to create consecutives integers. The picture itself can be stored as bytea. This allow the possibility to store the picture in a separate database and serve multiple tables, in case of expansion of the application- 
+In addition to the ID to identify each picture, we can store additional information like the date (as timestamp) and a name (as varchar).
+As the purpose of the application is to identify a handwritten digit, the prediction should be stored as an integer as well. 
 
 3. What additional relational database table attributes might make sense to easily query your data (f.e. find all pictures of giraffes)
 
+- To expand the scope of the application we could (hypothetically) have multiple prediction models, to accomodate different categories, expanding from the sphere of character recognition. In order to achieve we can create a table to store different categories, with as a classified_category (as varchar). The table would also contain the image id (as int) and the image (as a bytea). In this way, we a first classifier, to identify the type of category and on a second stage a more refined model, trained for that category. We expect that some of the weights learned by the model might be similar and a single model could be optimized for each category. 
 
 
  ## Task 4 Docker Compose Backend
