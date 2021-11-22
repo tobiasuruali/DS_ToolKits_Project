@@ -42,18 +42,34 @@
 To establish the connection from the database server and our local machine we are leveraging the package psycopg. It allows to pass the information to access to the database itself.
 
 ```
-database="ms3_jokes", user='admin', password='secret', host='db', port= '5432'
+database="ms3_jokes", user='admin', password='secret', host='localhost', port= '5432'
 ```
-With the cursor class we can use Python code to execute PostgreSQL command in our database. An example of cursor.
+With the cursor class we can use Python code to execute PostgreSQL command in our database. An example of filling our jokes_db with a list of jokes.
 
 ```
-#Droping Table if already exists
-cursor.execute("DROP TABLE IF EXISTS joke")
+    def insert_jokes():
+        sql_insert_jokes = '''
+INSERT INTO joke (joke_id, joke_text)
+VALUES (%s, %s)
+'''
+        jokes_list_index = (i[0],i[1])
+        cursor.execute(sql_insert_jokes, jokes_list_index)
+    # print(sql_insert_jokes, jokes_list_index)
+    for i in enumerate(joke_list): 
+        insert_jokes()
+
+    conn.commit()
 ```
+
+To then the if the database was filled, we open pgadmin (http://localhost:5050), connect to the database server and write a quick SELECT statement like so:
+
+  ![JokesDB in PG Admin](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/milestone3_feature/Milestone_Reports/images/erd_db.png)
+
 
 **Download the PGADMIN Tool (https://www.pgadmin.org/download/). It also exists as a Docker Image :) Connect to your running PostgreSQL Database. Can you see your database and table?**
 
 - We load a Docker Image of PGAdmin (dpage/pgadmin4:6.0). This allows to see the database and the table contained in it. 
+When first initizialing you will need to "create server..". You simply give it a name and in the "Connections Tab" you can type in "db", leave the port number, and type "admin" as the username and "secret" as the pw.  
 
 **If you stopped and deleted the Docker container running the database and restarted it. Would your joke still be in the database? Why or why not?** 
 - Yes, it would be available locally on our machines. This is based on how we set up the docker-compose script. In our setup the database use the following volume.: 
@@ -71,6 +87,7 @@ However, by using volumes, the changes that are written in the dockerized applic
 1) It is not efficient, as relational databases like PostgreSQL are not optimized for pictures.
 2) You loose many of the functionalities of a relational databases, by storing the pictures directly in a BLOB field (Binary Large Object)
 
+Since our MNIST image samples are pretty small, we can save them as either **BYTEA** or **BLOB** Datatypes. We decided to go with **BYTEA**  
 
 **Describe Process and Difficulties**
 
@@ -87,7 +104,7 @@ However, by using volumes, the changes that are written in the dockerized applic
 
  ## Task 4 Docker Compose Backend
 
- **Create Docker-Compose file for whole Backend**
+  **Create Docker-Compose file for whole Backend**
  
  
 **Structuring of DB**
