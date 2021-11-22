@@ -65,6 +65,10 @@ To then the if the database was filled, we open pgadmin (http://localhost:5050),
 
   ![JokesDB in PG Admin](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/milestone3_feature/Milestone_Reports/images/erd_db.png)
 
+**Instruction to Recreate**
+1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
+2. Run the main_img.py script ```python3 db/main_joke.py```
+3. Refresh your database and see the new *ms3_jokes* DB and new *jokes* table filled with jokes
 
 **Download the PGADMIN Tool (https://www.pgadmin.org/download/). It also exists as a Docker Image :) Connect to your running PostgreSQL Database. Can you see your database and table?**
 
@@ -89,6 +93,11 @@ However, by using volumes, the changes that are written in the dockerized applic
 
 Since our MNIST image samples are pretty small, we can save them as either **BYTEA** or **BLOB** Datatypes. We decided to go with **BYTEA**  
 
+**Instruction to Recreate**
+1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
+2. Run the main_img.py script ```python3 db/main_joke.py```
+3. Refresh your database and see the new *ms3_jokes* DB and new *jokes* table filled with jokes
+
 **Describe Process and Difficulties**
 
 1. How is your data structured (you can download and load it from the source. Some of you may use the Keras function to download it).
@@ -109,9 +118,40 @@ As the purpose of the application is to identify a handwritten digit, the predic
  ## Task 4 Docker Compose Backend
 
   **Create Docker-Compose file for whole Backend**
- 
+ ````
+docker-compose -f "docker-compose.yml" up -d --build 
+ ````
  
 **Structuring of DB**
 
+We decided to create a simple table structure for our current data set. We defined the following tables and columns: 
 
-**Wait-for-it.sh and Scheduling**
+  ![ERD Backend](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/ce22e6eff2916e0599e978fa006b47b3ba2bc755/Milestone_Reports/images/erd_db.png)
+
+We figured that for what now these are the essential columns:  
+*input_data:*  
+name_id, name, image, date (timestamp)  
+
+*predictions:*  
+prediction_id, prediction, *image_id*  
+
+the date column helps us retrieve the correct persisted picture that we then retrieve for our prediction. *image_id* is the **FOREIGN KEY** used to link the prediction with the specific picture. 
+
+**Scheduling**
+- For the scheduling we noticed that a waitfor.sh was not necessary in our use case. We attempted to run the whole backend and there were no scheduling conflict due to code added to the docker-compose:
+
+````
+  ...
+  dstoolkitsproject:
+    image: dstoolkitsproject:1.0.6
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+...
+````
+
+the ***depends_on*** statement makes sure this service part does not get run till the db: service is done.
