@@ -87,7 +87,7 @@ However, by using volumes, the changes that are written in the dockerized applic
 
  ## Task 4 Docker Compose Backend
 
-  **Create Docker-Compose file for whole Backend**
+ **Create Docker-Compose file for whole Backend**
  
  
 **Structuring of DB**
