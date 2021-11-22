@@ -44,6 +44,7 @@ def create_input_pred_db():
     cursor = conn.cursor()
 
 #Droping Table if already exists
+    cursor.execute("DROP TABLE IF EXISTS predictions")
     cursor.execute("DROP TABLE IF EXISTS input_data")
 
 #Create input_data and predictions table with Foreign Keys 
