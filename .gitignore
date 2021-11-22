@@ -855,3 +855,6 @@ pip-selfcheck.json
 
 #specific folder names
 /.vscode
+
+#pictures
+.png
