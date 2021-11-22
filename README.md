@@ -118,3 +118,24 @@ jupyter notebook
 
 3. Run the code.
 
+
+# **Instructions for DOCKER-COMPOSE**
+To run the whole Container Backend of our image prediction application, follow these steps:
+   1. Make sure you have docker and docker-compose installed
+   2. Open our main directory in your terminal and run the following code:
+ ````
+docker-compose -f "docker-compose.yml" up -d --build 
+ ````
+The docker images should start completely building. After all the services (PGAdmin & DB) are run the Tensorflow container will start creating a model, fit it. A random image will then be loaded into the DB input_data table. Our script will retrieve it and run our model on it to predict what digit the image is.
+The prediction will then be persisted into a predicitons table and the script will succesfully terminate. 
+
+
+## **Instruction for JOKES TABLE**
+1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
+2. Run the main_joke.py script ```python3 db/main_joke.py```
+3. Refresh your database and see the new *ms3_jokes* DB and new *jokes* table filled with jokes
+
+## **Instruction for IMAGE TABLE**
+1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
+2. Run the main_img.py script ```python3 db/main_img.py```
+3. Refresh your database and see the new *image* table inside the *ms3_jokes* db filled with with an image row. Make sure you run the main_jokes.py script prior to running this. Since the database only gets created in that module.
