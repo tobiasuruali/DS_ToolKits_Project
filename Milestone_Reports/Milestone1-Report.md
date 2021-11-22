@@ -47,7 +47,7 @@
   In this case the virtual environment is named venv and is hosted in the home directory, as per default.
   We can then activate the virtual environment by using the command.
   ```
-  source env/bin/activate venv 
+  source venv/bin/activate venv 
   ```
   We can see now from the terminal that the virtual environment is activated. In our case in the /env directory.
   To exit the virtual environment we can simply input:

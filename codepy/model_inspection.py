@@ -6,7 +6,8 @@ from tensorflow import keras
 
 def save_model(model):
     # model.save persists a h5 of your model  
-    model.save("keras_model.h5")
+    print("Saving Model:", model)
+    model.save("ds_keras_model.h5")
 
 # Function call example
 # save_model(model)
@@ -17,7 +18,11 @@ def save_model(model):
 
 def load_model():
     # load_model can then reconstruct the model identically
-    loaded_model = keras.models.load_model("keras_model.h5")
+    print("Loading Model from volumes..")
+    print("Current directory:")
+    import os
+    os.system("pwd")
+    loaded_model = keras.models.load_model("ds_keras_model.h5")
     return loaded_model
 
 # Function call example

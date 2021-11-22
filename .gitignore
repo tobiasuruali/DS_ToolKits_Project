@@ -854,3 +854,5 @@ pyvenv.cfg
 pip-selfcheck.json
 
 #specific folder names
+/.vscode
+
