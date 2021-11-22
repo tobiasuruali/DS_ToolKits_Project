@@ -42,7 +42,7 @@
 To establish the connection from the database server and our local machine we are leveraging the package psycopg. It allows to pass the information to access to the database itself.
 
 ```
-database="ms3_jokes", user='admin', password='secret', host='localhost', port= '5432'
+database="ms3_jokes", user='admin', password='secret', host='db', port= '5432'
 ```
 With the cursor class we can use Python code to execute PostgreSQL command in our database. An example of cursor.
 
