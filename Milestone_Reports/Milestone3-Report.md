@@ -63,11 +63,11 @@ VALUES (%s, %s)
 
 To then the if the database was filled, we open pgadmin (http://localhost:5050), connect to the database server and write a quick SELECT statement like so:
 
-  ![JokesDB in PG Admin](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/milestone3_feature/Milestone_Reports/images/erd_db.png)
+  ![JokesDB in PG Admin](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/ce22e6eff2916e0599e978fa006b47b3ba2bc755/Milestone_Reports/images/jokes_select_db.PNG)
 
 **Instruction to Recreate**
 1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
-2. Run the main_img.py script ```python3 db/main_joke.py```
+2. Run the main_joke.py script ```python3 db/main_joke.py```
 3. Refresh your database and see the new *ms3_jokes* DB and new *jokes* table filled with jokes
 
 **Download the PGADMIN Tool (https://www.pgadmin.org/download/). It also exists as a Docker Image :) Connect to your running PostgreSQL Database. Can you see your database and table?**
@@ -95,8 +95,8 @@ Since our MNIST image samples are pretty small, we can save them as either **BYT
 
 **Instruction to Recreate**
 1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
-2. Run the main_img.py script ```python3 db/main_joke.py```
-3. Refresh your database and see the new *ms3_jokes* DB and new *jokes* table filled with jokes
+2. Run the main_img.py script ```python3 db/main_img.py```
+3. Refresh your database and see the new *image* table inside the *ms3_jokes* db filled with with an image row. Make sure you run the main_jokes.py script prior to running this. Since the database only gets created in that module.
 
 **Describe Process and Difficulties**
 
