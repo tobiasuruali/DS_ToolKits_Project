@@ -47,6 +47,15 @@ https://www.ionos.com/digitalguide/server/know-how/docker-container-volumes
 docker run -d -p 80:80 docker/getting-started
 ````
 
+#### Killing Docker Images
+````
+docker rm -vf $(docker ps -aq)
+````
+
+````
+docker rmi -f $(docker images -aq)
+````
+
 ### Postgres Docker
 linuxhint.com/postgresql_docker
 https://towardsdatascience.com/how-to-run-postgresql-and-pgadmin-using-docker-3a6a8ae918b5

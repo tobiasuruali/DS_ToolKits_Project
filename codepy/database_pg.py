@@ -9,7 +9,7 @@ import model_inspection as inspection
 def create_milestone3_db():
     #make connection
     conn = psycopg2.connect(
-   database="postgres", user='admin', password='secret', host='localhost', port= '5432'
+   database="postgres", user='admin', password='secret', host='db', port= '5432'
 )
     conn.autocommit = True
 
@@ -37,7 +37,7 @@ def create_milestone3_db():
 def create_input_pred_db():
 #make connection
     conn = psycopg2.connect(
-   database="milestone_3", user='admin', password='secret', host='localhost', port= '5432'
+   database="milestone_3", user='admin', password='secret', host='db', port= '5432'
 )
 
 
@@ -79,7 +79,7 @@ def create_input_pred_db():
 def insert_load_random_image():
     #make connection
     conn = psycopg2.connect(
-   database="milestone_3", user='admin', password='secret', host='localhost', port= '5432'
+   database="milestone_3", user='admin', password='secret', host='db', port= '5432'
 )
 
 
@@ -142,7 +142,7 @@ def insert_load_random_image():
 def predict_and_persist(img_from_db, loaded_model):
     #make connection
     conn = psycopg2.connect(
-   database="milestone_3", user='admin', password='secret', host='localhost', port= '5432'
+   database="milestone_3", user='admin', password='secret', host='db', port= '5432'
 )
 
 

@@ -19,6 +19,9 @@ def save_model(model):
 def load_model():
     # load_model can then reconstruct the model identically
     print("Loading Model from volumes..")
+    print("Current directory:")
+    import os
+    os.system("pwd")
     loaded_model = keras.models.load_model("ds_keras_model.h5")
     return loaded_model
 

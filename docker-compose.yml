@@ -1,10 +1,6 @@
-version: '3.4'
+version: '3.7'
 
-services:
-  dstoolkitsproject:
-    image: dstoolkitsproject
-    restart: always
-    build: ./dockerfile       
+services: 
   db:
     container_name: pg_db_container
     image: postgres:14.1
@@ -35,7 +31,20 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     links:
       - "db:pgsql-server"
+
+  dstoolkitsproject:
+    image: dstoolkitsproject:1.0.6
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    
 volumes:
   db-data:
   pgadmin-data:
+  dstoolkitsproject-data:
+
 
