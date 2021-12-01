@@ -38,7 +38,6 @@ def train_model(x_train, y_train, model):
     epochs = 15
     
     wandb.config = {
-        "learning_rate": 0.001,
         "epochs": epochs,
         "batch_size": batch_size
 }
