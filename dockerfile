@@ -12,4 +12,5 @@ COPY . /app
 # RUN ls -la
 # RUN pwd
 
+ENTRYPOINT [ "app/codepy/docker_entrypoint.sh" ]
 CMD ["python", "/app/codepy/main.py"]

@@ -1,6 +1,8 @@
 import numpy as np
 from tensorflow import keras
-from tensorflow.keras import layers 
+from tensorflow.keras import layers
+import wandb
+from wandb.keras import WandbCallback
 
 """
 ## Build the model
@@ -34,10 +36,18 @@ def build_model(num_classes, input_shape):
 def train_model(x_train, y_train, model):
     batch_size = 128
     epochs = 15
+    
+    wandb.config = {
+        "learning_rate": 0.001,
+        "epochs": epochs,
+        "batch_size": batch_size
+}
 
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
-    model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+    model.fit(x_train, y_train, batch_size=batch_size,
+              epochs=epochs, validation_split=0.1,
+              callbacks=[WandbCallback()])
 
 # Function Call example
 # train_model(x_train, y_train, model)

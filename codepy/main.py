@@ -5,6 +5,7 @@ import predictions
 import database_pg
 
 if __name__ == "__main__":
+    data_preparation.initialize_wandb()
     num_classes, input_shape, x_train, y_train, x_test, y_test = data_preparation.prepare_data()
     #Comment form here..
     model = build.build_model(num_classes, input_shape)
