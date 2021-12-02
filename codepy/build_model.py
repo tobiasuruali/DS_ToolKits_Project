@@ -43,11 +43,6 @@ def train_model(x_train, y_train, x_test, y_test, model):
         "validation_split" : 0.1,
         
     }
-    
-    # batch_size = 128
-    # epochs = 15
-    
-    
 
     model.compile(loss= wandb.config['loss'], optimizer= wandb.config['optimizer'], metrics= [wandb.config['metrics']])
 
