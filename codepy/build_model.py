@@ -33,19 +33,27 @@ def build_model(num_classes, input_shape):
 ## Train the model
 """
 
-def train_model(x_train, y_train, model):
-    batch_size = 128
-    epochs = 15
-    
+def train_model(x_train, y_train, x_test, y_test, model):
     wandb.config = {
-        "epochs": epochs,
-        "batch_size": batch_size
-}
+        "epochs": 15,
+        "batch_size": 128,
+        "loss": "categorical_crossentropy",
+        "optimizer": "adam",
+        "metrics" : "accuracy",
+        "validation_split" : 0.1,
+        
+    }
+    
+    # batch_size = 128
+    # epochs = 15
+    
+    
 
-    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+    model.compile(loss= wandb.config['loss'], optimizer= wandb.config['optimizer'], metrics= [wandb.config['metrics']])
 
-    model.fit(x_train, y_train, batch_size=batch_size,
-              epochs=epochs, validation_split=0.1,
+    model.fit(x_train, y_train, batch_size= wandb.config['batch_size'],
+              epochs= wandb.config['epochs'], validation_split= wandb.config['validation_split'],
+              validation_data=(x_test, y_test),
               callbacks=[WandbCallback()])
 
 # Function Call example

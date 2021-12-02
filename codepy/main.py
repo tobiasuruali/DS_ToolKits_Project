@@ -9,7 +9,7 @@ if __name__ == "__main__":
     num_classes, input_shape, x_train, y_train, x_test, y_test = data_preparation.prepare_data()
     #Comment form here..
     model = build.build_model(num_classes, input_shape)
-    build.train_model(x_train, y_train, model)
+    build.train_model(x_train, y_train, x_test, y_test, model)
     inspection.save_model(model)
     #..To here for testing purposes 
     loaded_model = inspection.load_model()
