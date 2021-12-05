@@ -5,6 +5,7 @@ import data_preparation as data_preparation
 import matplotlib.pyplot as plt
 from tensorflow import keras
 import model_inspection as inspection
+import wandb
 
 def create_milestone3_db():
     #make connection
@@ -181,7 +182,7 @@ def predict_and_persist(img_from_db, loaded_model):
     """,
     (int_single_prediction, (get_foreign_key))
 )
-
+    wandb.log({"img": [wandb.Image(img_from_db, caption=int_single_prediction)]})
 
     conn.commit()
     conn.close()

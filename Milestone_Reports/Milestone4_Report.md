@@ -17,6 +17,10 @@
 ## Task 3 
 
 
+´´´
+docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
+´´´
+
 
 
 ## Task 4
