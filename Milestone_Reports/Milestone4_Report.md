@@ -15,7 +15,7 @@
 
 
 ## Task 3 
-
+Run the docker image while being in the DS_Toolkits_Projects (or wherever you save your .env file) and it will login to wandb and run the code.
 
 ´´´
 docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
