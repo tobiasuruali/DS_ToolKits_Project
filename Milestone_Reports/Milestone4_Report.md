@@ -20,7 +20,9 @@ Run the docker image while being in the DS_Toolkits_Projects (or wherever you sa
 ´´´
 docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
 ´´´
-
+´´´
+docker-compose --env-file=.env -f "docker-compose.yml" up -d --build
+´´´
 
 
 ## Task 4
