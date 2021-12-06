@@ -4,7 +4,7 @@ import pickle
 import data_preparation as data_preparation
 import matplotlib.pyplot as plt
 from tensorflow import keras
-import model_inspection as inspection
+import codepy.model_inspection as inspection
 import wandb
 
 def create_milestone3_db():

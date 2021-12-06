@@ -1,11 +1,11 @@
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
-import data_preparation
-import model_inspection
+import codepy.data_preparation as data_preparation
+import codepy.model_inspection as model_inspection
 import matplotlib.pyplot as plt 
 import random
-import build_model
+import codepy.build_model as build_model
 
 ## For script testing purposes 
 # num_classes, input_shape, x_train, y_train, x_test, y_test = data_preparation.prepare_data()
