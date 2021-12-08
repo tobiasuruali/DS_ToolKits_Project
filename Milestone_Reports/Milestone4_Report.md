@@ -47,7 +47,7 @@ Creating a entry_point.sh and the respective .env with the AUTH key file worked 
 ```
 docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
 ```
-  2. For docker-compose this solution would end up working then, right? right? **WRONG** It was then a whole other story. The ENTRYPOINT statement didn't end up working cause docker-compose up could not find the .env file. We tried defining the env file in the ```docker-compose up``` statement, with:  
+  2. For docker-compose this solution would end up working then, right? right? **WRONG** It was then a whole other story. The ENTRYPOINT statement didn't end up working cause ```docker-compose up``` could not find the .env file. We tried defining the env file in the ```docker-compose up``` statement, with:  
 
 ```
   docker-compose --env-file=.env -f "docker-compose.yml" up -d --build
