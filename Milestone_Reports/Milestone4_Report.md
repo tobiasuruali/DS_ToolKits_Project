@@ -43,7 +43,7 @@ Login to W&B (Tip: you can use ENTRYPOINT in a Dockerfile to run a shell script 
 below)):  
 This was one of the most headache enducing tasks, which would end up with the "easiest" solution. But it wouldn't be a coding project without these type of headaches, right? :')  
 Creating a entry_point.sh and the respective .env with the AUTH key file worked out easily. But then the difficulties began.
-  1. Entrypoint firstly didn't recognize the sh. file cause we didn't know ```ENTRYPOINT ["docker-entrypoint.sh]```  wasn't enough: The solution ```ENTRYPOINT ["sh", "docker-entrypoint.sh"]``` ended up working for running and building the container with dockerfile
+  1. Entrypoint firstly didn't recognize the sh. file cause we didn't know ```ENTRYPOINT ["docker-entrypoint.sh]```  wasn't enough: The solution ```ENTRYPOINT ["sh", "docker-entrypoint.sh"]``` ended up working for running and building the container with dockerfile. Run the docker image while being in the DS_Toolkits_Projects (or wherever you save your .env file) and it will login to wandb and run the code.
 ```
 docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
 ```
@@ -67,7 +67,7 @@ We used the same model as we did in previous task. Adding Wandb statements to di
 wandb.init(project="ds_toolkits_project", entity="unilu-dstoolkits")
 ```
 - wandb nicely logs most of the necessary metrics the model produces. 
-As you can see here: https://wandb.ai/unilu-dstoolkits
+As you can see here: **https://wandb.ai/unilu-dstoolkits**
 It logs accuracy, loss, epochs and other interesting metrics.
 
 - Save and upload the trained model  
@@ -76,25 +76,34 @@ After every finished run, wandb saves the best model as "model-best.h5" in your 
 - Commitdata:  
 Commit Hash's didn't seem to log eventhough our github repos were connected to the project. We set up "file save on runs" in the settings and that basically allows us to see what was changed (diff.patch file) and how the code looked at initialization. 
 
-For the last part of the task: 
+*All Container Runs are documented here **https://wandb.ai/unilu-dstoolkits/ds_toolkits_project**
 
-skilled-deluge-10 run with binary crossentropy which isn't made for categorical data like our own. 
+### Model Experimentation
+
+For the last part of the task: we decided to already switch to jupyter notebooks, cause and parameter changing is a lot faster outside of docker containers 
+
+**NOTE: FROM HERE WE ONLY USE *WandB_Milestone4.ipynb*** 
+
+Firstly the same main.py code was more or less copy pasted.
+To enable quick parameter and architecture changes, the train_model() function was taken out of the module and is utilized to give a greater overview of parameter choices. For Task 3 we disabled the DB part but if you want to run test with docker-compose, it will be enabled over there.
+
+**https://wandb.ai/unilu-dstoolkits/ipynb_test_runs**
+
+We played around with all different optimizers. Here's the observations we made:
+- Firstly we found that extending the epochs made the model even more accurate, Testing till 20 epochs brought out the most accurate model. Lowering for the most part made it less accurate but not by a huge margin
+- We then changed optimizers to all different types (adamax, adagrad, sgd, nadam) with the same epochs and loss functions our model still performed the best (the variations of the adam algorithm coming the closest to being on the same level.).  
+- Additionally we tried some loss functions, which were sparse for categorical datapoints. To experiment and make the worst model possible (with standard epochs) we used "binary crossentropy" which is ment for 2 category data. This ended up giving us the worst loss value obviously. 
+
 
 
 
 ## Task 3 
-Run the docker image while being in the DS_Toolkits_Projects (or wherever you save your .env file) and it will login to wandb and run the code.
 
-´´´
-docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
-´´´  
-´´´
-docker-compose --env-file=.env -f "docker-compose.yml" up -d --build
-´´´
+We chose the same Mnist Dataset as and as you can see by the first out put, the train set consists of 60'000 img's with a (28,28,1) shape. 1 cause it we normalized it and made it greyscale.
+We build the model with the set parameters and wait for it to run through all the epochs.
 
+We documented the Histogram and Confusion matrix in a wandb Report which you can view here:
 
-## Task 4
+**https://wandb.ai/unilu-dstoolkits/ipynb_test_runs/reports/Visualization-Task-3--VmlldzoxMzE0MTY3**
 
 
-
-## Task 5
