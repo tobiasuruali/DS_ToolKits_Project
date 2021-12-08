@@ -13,4 +13,4 @@ COPY . /app
 # RUN pwd
 
 ENTRYPOINT [ "sh", "docker_entrypoint.sh"]
-CMD ["python", "/app/codepy/main.py"]
+CMD ["python", "/app/main.py"]

@@ -38,6 +38,44 @@ The confusion Matrix is the essential element to calculate the metric described 
 On the other hand a model could wrongly identify a picture with a car as "without a car "(false negative) and a picture without a car as having a car (false positive). Of course, a confusion matrix can be scaled from binary classification to multi-class classification. In that case the matrix would not be a 2X2 but have as many rows and colomuns as classes.    
 ## Task 2
 
+Your code should:
+Login to W&B (Tip: you can use ENTRYPOINT in a Dockerfile to run a shell script that logs you in (see
+below)):  
+This was one of the most headache enducing tasks, which would end up with the "easiest" solution. But it wouldn't be a coding project without these type of headaches, right? :')  
+Creating a entry_point.sh and the respective .env with the AUTH key file worked out easily. But then the difficulties began.
+  1. Entrypoint firstly didn't recognize the sh. file cause we didn't know ```ENTRYPOINT ["docker-entrypoint.sh]```  wasn't enough: The solution ```ENTRYPOINT ["sh", "docker-entrypoint.sh"]``` ended up working for running and building the container with dockerfile
+```
+docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
+```
+  2. For docker-compose this solution would end up working then, right? right? **WRONG** It was then a whole other story. The ENTRYPOINT statement didn't end up working cause docker-compose up could not find the .env file. We tried defining the env file in the ```docker-compose up``` statement, with:  
+
+```
+  docker-compose --env-file=.env -f "docker-compose.yml" up -d --build
+```
+3. This didn't end up working either and after hours of stackoverflow exploration changing the docker-compose and adding a env_file: statement to the dockerfile image ended up working. 
+```
+    env_file:
+      - .env
+```
+
+
+
+
+- Train a Model  
+We used the same model as we did in previous task. Adding Wandb statements to different segments of the code to not just log our model but also interesting data.
+```
+wandb.init(project="ds_toolkits_project", entity="unilu-dstoolkits")
+```
+- wandb nicely logs most of the necessary metrics the model produces. 
+As you can see here: https://wandb.ai/unilu-dstoolkits
+It logs accuracy, loss, epochs and other interesting metrics.
+
+- Save and upload the trained model  
+After every finished run, wandb saves the best model as "model-best.h5" in your file section. You can then easily download it from there.
+
+- Commitdata:  
+Commit Hash's didn't seem to log eventhough our github repos were connected to the project. We set up "file save on runs" in the settings and that basically allows us to see what was changed (diff.patch file) and how the code looked at initialization. 
+
 For the last part of the task: 
 
 skilled-deluge-10 run with binary crossentropy which isn't made for categorical data like our own. 
@@ -49,7 +87,7 @@ Run the docker image while being in the DS_Toolkits_Projects (or wherever you sa
 
 ´´´
 docker run --env-file=.env --rm -it  dstoolkitsproject:1.0.12
-´´´
+´´´  
 ´´´
 docker-compose --env-file=.env -f "docker-compose.yml" up -d --build
 ´´´
