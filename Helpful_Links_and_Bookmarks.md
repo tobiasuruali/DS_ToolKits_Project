@@ -74,6 +74,11 @@ docker run -d --name=ds_test_docker -v volumes:/volumes dstoolkitsproject:latest
 ### Saving Models (H5 Files as well)
 https://www.tensorflow.org/guide/keras/save_and_serialize
 
+### Optimizers 
+https://analyticsindiamag.com/guide-to-tensorflow-keras-optimizers/
+
+### Loss Functions 
+
 
 ## Pip Requirements
 

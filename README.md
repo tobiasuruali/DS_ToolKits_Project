@@ -139,3 +139,14 @@ The prediction will then be persisted into a predicitons table and the script wi
 1. After running the db/docker-compse.yml and reassuring that pgadmin are up and running
 2. Run the main_img.py script ```python3 db/main_img.py```
 3. Refresh your database and see the new *image* table inside the *ms3_jokes* db filled with with an image row. Make sure you run the main_jokes.py script prior to running this. Since the database only gets created in that module.
+
+# Milestone 4
+
+## WandB
+
+### Docker-Compose Runs
+**https://wandb.ai/unilu-dstoolkits/ds_toolkits_project**
+
+
+### Jupyter Notebook Runs
+**https://wandb.ai/unilu-dstoolkits/ipynb_test_runs**

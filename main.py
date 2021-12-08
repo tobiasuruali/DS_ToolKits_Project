@@ -1,8 +1,8 @@
-import data_preparation 
-import build_model as build
-import model_inspection as inspection
-import predictions
-import database_pg
+import codepy.data_preparation as data_preparation 
+import codepy.build_model as build
+import codepy.model_inspection as inspection
+import codepy.predictions as predictions
+import codepy.database_pg as database_pg
 
 if __name__ == "__main__":
     data_preparation.initialize_wandb()

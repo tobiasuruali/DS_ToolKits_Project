@@ -34,6 +34,8 @@ services:
 
   dstoolkitsproject:
     image: dstoolkitsproject:1.0.6
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: ./dockerfile

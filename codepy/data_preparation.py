@@ -1,6 +1,12 @@
 import numpy as np
 from tensorflow import keras
 import random
+import wandb
+from wandb.keras import WandbCallback
+
+def initialize_wandb():
+    wandb.init(project="ds_toolkits_project", entity="unilu-dstoolkits")
+
 
 def prepare_data():
     # Model / data parameters

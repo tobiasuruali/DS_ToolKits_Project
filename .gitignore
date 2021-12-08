@@ -856,3 +856,13 @@ pip-selfcheck.json
 #specific folder names
 /.vscode
 
+#WandB Token
+.env
+
+*.swp
+.python-version
+wandb/
+wandb-debug.log
+__pycache__
+.ipynb_checkpoints
+.DS_Store
