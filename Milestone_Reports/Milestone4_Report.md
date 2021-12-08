@@ -38,6 +38,9 @@ The confusion Matrix is the essential element to calculate the metric described 
 On the other hand a model could wrongly identify a picture with a car as "without a car "(false negative) and a picture without a car as having a car (false positive). Of course, a confusion matrix can be scaled from binary classification to multi-class classification. In that case the matrix would not be a 2X2 but have as many rows and colomuns as classes.    
 ## Task 2
 
+For the last part of the task: 
+
+skilled-deluge-10 run with binary crossentropy which isn't made for categorical data like our own. 
 
 
 
