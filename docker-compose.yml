@@ -43,10 +43,18 @@ services:
       - .:/app
     depends_on:
       - db
-    
+#  web:
+#    build: ./flask_app/dockerfile
+#    ports:
+#      - "5000:5000"
+#  redis:
+#    image: "redis:alpine" 
+
 volumes:
   db-data:
   pgadmin-data:
   dstoolkitsproject-data:
+  web:
+  redis:
 
 
