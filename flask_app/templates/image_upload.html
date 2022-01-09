@@ -4,6 +4,7 @@
 
 {% block main %}
 
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -13,7 +14,8 @@
       <!-- add custom form for image upload -->
       <form action="/upload-image" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-          <label style = "color:white"><strong>Upload a hand drawn digit image and our model will predict the exact number.</strong></label>
+          <label style="color:white"><strong>Upload a hand drawn digit image and our model will predict the exact
+              number.</strong></label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" name="image" id="image">
             <label class="custom-file-label" for="image">Select image...</label>
@@ -31,6 +33,12 @@
           nextSibling.innerText = name
         })
       </script>
+
+      {% if filename %}
+      <div>
+        <img src="{{ url_for('send_uploaded_file', filename=filename) }}" class= "img-fluid img-thumbnail" alt="Responsive image">
+      </div>
+      {% endif %}
 
     </div>
   </div>
