@@ -10,7 +10,7 @@
 
       <h1><strong>Upload an Image</strong></h1>
       <hr>
-
+      <!-- add custom form for image upload -->
       <form action="/upload-image" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label style = "color:white"><strong>Upload a hand drawn digit image and our model will predict the exact number.</strong></label>
@@ -23,6 +23,14 @@
         <button type="submit" class="btn btn-info">Upload</button>
 
       </form>
+      <!-- Add functionality that form adjusts to filename (Javascript) -->
+      <script>
+        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+          var name = document.getElementById("image").files[0].name;
+          var nextSibling = e.target.nextElementSibling
+          nextSibling.innerText = name
+        })
+      </script>
 
     </div>
   </div>
