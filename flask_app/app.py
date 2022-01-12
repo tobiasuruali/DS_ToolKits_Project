@@ -134,22 +134,6 @@ def send_prediction(prediction=''):
     return prediction
 
 
-# stock = {
-#     "fruit": {
-#         "apple": 30,
-#         "banana": 45,
-#         "cherry": 1000
-#     }
-# }
-
-
-# @app.route('/stock', methods=["GET"])
-# def get_stock():
-
-#     res = make_response(jsonify(stock), 200)
-
-#     return res
-
 
 #API JSON Part
 
@@ -220,5 +204,7 @@ def add_images():
 
 
 if __name__ == "__main__":
-    app.run( host="0.0.0.0", debug=True
+    app.run( 
+            #for local (non docker use), comment this line out
+            host="0.0.0.0", debug=True
     )
