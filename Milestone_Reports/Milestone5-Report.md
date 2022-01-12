@@ -118,13 +118,10 @@ With code as simple as this, it was already possible to set up a upload form for
 ```
 as you can tell from the flask part, the post request doesn't do anything yet with the image saved. Which turned out to be a lot of a hassle than expected
 
-![Starting Website]()
+![Starting Website](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/55654a08ac80723625f13f7d1b14835137a6881c/Milestone_Reports/images/start_page.PNG)
 
 
 With a lot headaches we additionally implemented that alerts, image name, displayed the picture and displaying the predicted number our model made.
-
-
-![Image Upload Page]()
 
 
 ## Processing Images through JSON and base64
@@ -283,7 +280,12 @@ def send_uploaded_file(filename=''):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 ```
 
-send_uploaded_file() accesses the filename and finds the image locally to and previews it for the client. Additionally the prediction will also be displayed 
+send_uploaded_file() accesses the filename and finds the image locally to and previews it for the client. Additionally the prediction will also be displayed.
+
+Finished product:
+
+![Image Upload Page](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/55654a08ac80723625f13f7d1b14835137a6881c/Milestone_Reports/images/Upload_Page_finished.PNG)
+
 
 ## DOCKERIZING
 
