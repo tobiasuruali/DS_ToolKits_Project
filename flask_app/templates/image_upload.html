@@ -1,0 +1,50 @@
+{% extends "jinja_template/standard_template.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block main %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1><strong>Upload an Image</strong></h1>
+      <hr>
+      <!-- add custom form for image upload -->
+      <form action="/upload-image" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label style="color:white"><strong>Upload a hand drawn digit image and our model will predict the exact
+              number.</strong></label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="image" id="image">
+            <label class="custom-file-label" for="image">Select image...</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">Upload</button>
+
+      </form>
+      <!-- Add functionality that form adjusts to filename (Javascript) -->
+      <script>
+        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+          var name = document.getElementById("image").files[0].name;
+          var nextSibling = e.target.nextElementSibling
+          nextSibling.innerText = name
+        })
+      </script>
+      <br>
+      {% if prediction %}
+      <h2>Our Model predicted: <strong>{{prediction}}</strong></h2>
+      {% endif %}
+      <br>
+      {% if filename %}
+      <div>
+        <img src="{{ url_for('send_uploaded_file', filename=filename) }}" class= "img-fluid img-thumbnail" alt="Responsive image">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

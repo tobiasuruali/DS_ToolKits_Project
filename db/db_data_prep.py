@@ -34,4 +34,4 @@ def random_img_sample():
     return random_img_x, squeezed_random_img_x
 
 # Example Function Call
-# random_img_sample()
+# random_img_x, squeezed_random_img_x = random_img_sample()
