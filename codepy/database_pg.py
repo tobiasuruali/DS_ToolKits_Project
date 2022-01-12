@@ -89,16 +89,10 @@ def insert_load_random_image():
 
 
     random_img_x, squeezed_random_img_x = data_preparation.random_img_sample()
-# x_train = np.random.rand(1500,550)
     print(type(random_img_x.shape))
 
     name = 'Test Image X'
 
-# sql_insert_array = """
-#     INSERT INTO input_data (id, name, x_test_set)
-#     VALUES (%s,%s,%s)
-#     """
-# sql_array = (i[0], 'X Training Set', x_train)
 
 #Persist training set into the db
     cursor.execute(
