@@ -32,29 +32,22 @@ services:
     links:
       - "db:pgsql-server"
 
-  # dstoolkitsproject:
-  #   image: dstoolkitsproject:1.0.6
-  #   env_file:
-  #     - .env
-  #   build:
-  #     context: .
-  #     dockerfile: ./dockerfile
-  #   volumes:
-  #     - .:/app
-  #   depends_on:
-  #     - db
-#  web:
-#    build: ./flask_app/dockerfile
-#    ports:
-#      - "5000:5000"
-#  redis:
-#    image: "redis:alpine" 
+  dstoolkitsproject:
+    image: dstoolkitsproject
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app
 
 volumes:
   db-data:
   pgadmin-data:
-  # dstoolkitsproject-data:
-  # web:
-  # redis:
+  dstoolkitsproject-data:
+
 
 

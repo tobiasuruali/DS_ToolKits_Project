@@ -10,7 +10,7 @@ from io import BytesIO
 def create_db():
     # make connection
     conn = psycopg2.connect(
-        database="postgres", user='admin', password='secret', host='localhost', port='5432'
+        database="postgres", user='admin', password='secret', host='db', port='5432'
     )
     conn.autocommit = True
 
@@ -39,7 +39,7 @@ create_db()
 def create_table():
     # make connection
     conn = psycopg2.connect(
-        database="mnist_prediction", user='admin', password='secret', host='localhost', port='5432'
+        database="mnist_prediction", user='admin', password='secret', host='db', port='5432'
     )
 
     cursor = conn.cursor()
@@ -74,7 +74,7 @@ def create_table():
 def save_prediction_db(filename, image, prediction):
     # make connection
     conn = psycopg2.connect(
-        database="mnist_prediction", user='admin', password='secret', host='localhost', port='5432'
+        database="mnist_prediction", user='admin', password='secret', host='db', port='5432'
     )
 
     cursor = conn.cursor()
@@ -97,7 +97,7 @@ def save_prediction_db(filename, image, prediction):
 
 def select_image_from_db():
     conn = psycopg2.connect(
-        database="mnist_prediction", user='admin', password='secret', host='localhost', port='5432'
+        database="mnist_prediction", user='admin', password='secret', host='db', port='5432'
     )
 
     cursor = conn.cursor()
