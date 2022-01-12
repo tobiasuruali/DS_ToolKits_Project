@@ -33,13 +33,16 @@
           nextSibling.innerText = name
         })
       </script>
-
+      <br>
+      {% if prediction %}
+      <h2>Our Model predicted: <strong>{{prediction}}</strong></h2>
+      {% endif %}
+      <br>
       {% if filename %}
       <div>
         <img src="{{ url_for('send_uploaded_file', filename=filename) }}" class= "img-fluid img-thumbnail" alt="Responsive image">
       </div>
       {% endif %}
-
     </div>
   </div>
 </div>
