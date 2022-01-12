@@ -150,3 +150,20 @@ The prediction will then be persisted into a predicitons table and the script wi
 
 ### Jupyter Notebook Runs
 **https://wandb.ai/unilu-dstoolkits/ipynb_test_runs**
+
+# Milestone 5 Flask  
+
+Run the docker-compose file and a webservice will start up. 
+
+```
+docker-compose -f "docker-compose.yml" up -d --build
+```
+
+
+
+On a browser, go to the IP that the dstoolkits container lists.
+When visiting the page **/upload-image** you can then upload a specific (handwritten digit) image on our form and our model will predict the number.
+
+![Starting Page]()
+
+
