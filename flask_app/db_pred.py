@@ -45,8 +45,8 @@ def create_table():
     cursor = conn.cursor()
 
 # Droping Table if already exists
-    cursor.execute("DROP TABLE IF EXISTS predictions")
-    print("Table dropped and created again......")
+    # cursor.execute("DROP TABLE IF EXISTS predictions")
+    # print("Table dropped and created again......")
 
 # Create predictions table
     conn.commit()
@@ -101,7 +101,7 @@ def select_image_from_db():
     )
 
     cursor = conn.cursor()
-    
+
     cursor.execute(
     """
     SELECT image
@@ -114,7 +114,7 @@ def select_image_from_db():
     img_from_db = pickle.loads(cursor.fetchone()[0])
     conn.commit()
     conn.close()
-    
+
     img_from_db = np.asarray(img_from_db)
     print(type(img_from_db))
     # print(img_from_db.shape)
@@ -122,5 +122,4 @@ def select_image_from_db():
 
     two_d = (np.reshape(img_from_db, (28, 28)) * 255).astype(np.uint8)
     plt.imsave(fname="test_readDB_test_photo.png",arr= two_d, cmap=plt.get_cmap('gray'))
-    
-    
+
