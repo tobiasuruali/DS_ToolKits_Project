@@ -2,7 +2,6 @@
 import os
 from flask import Flask
 from flask import render_template, request, redirect, flash, url_for, jsonify, make_response
-from redis import Redis
 from werkzeug.utils import secure_filename
 import numpy as np
 import base64
