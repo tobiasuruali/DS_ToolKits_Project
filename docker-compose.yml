@@ -33,10 +33,10 @@ services:
       - "db:pgsql-server"
 
   dstoolkitsproject:
-    image: dstoolkitsproject
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: tobiasuruali/dstoolkits:1.0
+    #build:
+      # context: .
+      # dockerfile: ./Dockerfile
     depends_on:
       - db
     ports:

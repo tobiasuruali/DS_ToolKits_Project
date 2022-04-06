@@ -11,7 +11,11 @@ from PIL import Image
 from io import BytesIO
 import db_pred as db
 import model_inspection as inspection
-
+#get environment variables
+from dotenv import load_dotenv
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 
 # UPLOAD_FOLDER = 'static/img/uploads/'
 UPLOAD_FOLDER = os.getcwd()
@@ -26,9 +30,12 @@ db.create_table()
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = "Super Secret Key"
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+#set flask_env to production
+app.config['FLASK_ENV'] = 'production'
+
 
 # Allow only pictures to be uploaded
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -43,15 +50,52 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/about", methods=["GET"])
-def about():
+@app.route("/gf", methods=["GET"])
+def gf():
     return """
-    <h1 style='color: red;'>I'm a red H1 heading!</h1>
-    <p>This is a lovely little paragraph</p>
-    <code>Flask is <em>awesome</em></code>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    </head>
+    <body>
+    
+    <h1>I love my Girlfriend</h1>
+    
+    <p style="font-size:48px">
+    &#128151; Shannon &#128151;
+    </p>
+
+    </body>
+    </html>
+    
     """
 
+@app.route("/vitor", methods=["GET"])
+def vitor():
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    </head>
+    <body>
+    
+    <h1 style='color: brown;'>Vitor is a loser</h1>
+    <p style="font-size:48px">
+    &#128169;
+    </p>
+    
+    </body>
+    </html>
+    """
+
+
 # Website UI Part
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 @app.route("/upload-image", methods=["GET", "POST"])
@@ -204,7 +248,13 @@ def add_images():
 
 
 if __name__ == "__main__":
-    app.run( 
-            #for local (non docker use), comment this line out
-            host="0.0.0.0", debug=True
-    )
+    #Development mode
+    # app.run( 
+    #         #for local (non docker use), comment this line out
+    #         host="0.0.0.0", debug=True
+    # )
+    #Production mode with WSGI
+    from waitress import serve
+    print('starting webservice.....')
+    serve(app, host="0.0.0.0", port=5000)
+    print('Running on localhost.....')
