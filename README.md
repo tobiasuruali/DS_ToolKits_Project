@@ -1,4 +1,4 @@
-# **DS_ToolKits_Project**
+# **DataScience_ToolKits_Project**
 
 Toolkit Usage and Python Development by Tobias Hoesli & Marco Colombatti
 
