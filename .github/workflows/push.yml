@@ -4,8 +4,8 @@ jobs:
   Docker-Compose-Deployment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build the stack
-        run: docker-compose up -d
-      - name: Test
+        run: docker-compose -f "docker-compose.yml" up -d --build
+      - name: Testing running containers  
         run: docker ps
