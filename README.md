@@ -167,3 +167,4 @@ When visiting the page **/upload-image** you can then upload a specific (handwri
 ![Starting Page](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/3ca32159641d84f85fae652b5878042d2b071587/Milestone_Reports/images/starting_page.PNG)
 
 
+
