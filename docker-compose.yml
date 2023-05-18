@@ -33,7 +33,7 @@ services:
       - "db:pgsql-server"
 
   dstoolkitsproject:
-    image: dstoolkitsproject
+    image: dstoolkitsproject:1.0.1
     build:
       context: .
       dockerfile: ./Dockerfile
