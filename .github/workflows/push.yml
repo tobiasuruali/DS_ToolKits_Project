@@ -12,3 +12,5 @@ jobs:
         shell: bash
       - name: Testing running containers  
         run: docker ps
+      - name: Check if Flask app is up and running
+        run: curl http://localhost:5000/about
