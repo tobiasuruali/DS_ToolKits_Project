@@ -10,6 +10,7 @@ from PIL import Image
 from io import BytesIO
 import db_pred as db
 import model_inspection as inspection
+from markupsafe import escape
 
 # Model Preparation
 loaded_model = inspection.load_model()
@@ -122,7 +123,7 @@ def send_uploaded_file(filename=''):
 
 @app.route('/uploads/<prediction>')
 def send_prediction(prediction=''):
-    return prediction
+    return escape(prediction)
 
 
 #API JSON Part
