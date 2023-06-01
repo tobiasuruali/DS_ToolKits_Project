@@ -8,7 +8,7 @@ jobs:
       - name: Build the stack
         run: docker-compose -f "docker-compose.yml" up -d --build
       - name: Sleep for 1 minute
-        run: sleep 60s
+        run: sleep 30s
         shell: bash
       - name: Testing running containers 
         run: docker ps
@@ -24,4 +24,5 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: |
-          docker exec -it pg_db_container psql -U admin -d mnist_prediction -c "SELECT prediction_id, prediction, filename, date FROM public.predictions ORDER BY prediction_id DESC LIMIT 100"
+          docker exec pg_db_container psql -U admin -d mnist_prediction -c "SELECT prediction_id, prediction, filename, date FROM public.predictions ORDER BY prediction_id DESC LIMIT 100"
+          prediction -c "SELECT prediction_id, prediction, filename, date FROM public.predictions ORDER BY prediction_id DESC LIMIT 100"
