@@ -1,7 +1,7 @@
-# compose_flask/app.py
 import os
 from flask import Flask
 from flask import render_template, request, redirect, flash, url_for, jsonify, make_response
+from flask import send_from_directory
 from werkzeug.utils import secure_filename
 import numpy as np
 import base64
@@ -11,10 +11,6 @@ from io import BytesIO
 import db_pred as db
 import model_inspection as inspection
 
-
-# UPLOAD_FOLDER = 'static/img/uploads/'
-UPLOAD_FOLDER = os.getcwd()
-
 # Model Preparation
 loaded_model = inspection.load_model()
 
@@ -22,11 +18,10 @@ loaded_model = inspection.load_model()
 db.create_db()
 db.create_table()
 
-
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "Super Secret Key"
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = os.getcwd()
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 # Allow only pictures to be uploaded
@@ -75,32 +70,24 @@ def upload_image():
             return redirect(request.url)
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            prediction = 2  # PLACEHOLDER
+            prediction = 2 # PLACEHOLDER
 
             # Convert image data converted to base64 to original binary data# bytes
             # Filestorage item has to be encoded so we can resize with PIL and np
             image_bytes = base64.b64encode(image.read())
             image_string = image_bytes.decode("utf-8")
             img = base64.b64decode(image_string)
-            img = BytesIO(img)  # _io.Converted to be handled by BytesIO pillow
+            img = BytesIO(img) # _io.Converted to be handled by BytesIO pillow
             img = Image.open(img)
             img = img.resize((28, 28))
             img_np = np.array(img)
-            print(type(img))
-            print(img_np.shape)
-            print(type(img_np))
-            print(img_np.ndim)
 
             # all 3 dimensional images will need to be resized to (1, 28, 28, 1) for the model
             if img_np.ndim == 3:
                 img_np = img_np.astype("float32") / 255
-                print(img_np.shape)
                 img_np = img_np[:, :, 0]
-                print(img_np.shape)
                 img_np = np.expand_dims(img_np, -1)
-                print(img_np.shape)
                 img_np = np.array([img_np])
-                print(img_np.shape)
 
             # incase image/array is already 2 dimensional (grey scale) we proceed as milestone 1
             if img_np.ndim == 2:
@@ -113,20 +100,16 @@ def upload_image():
             int_single_prediction = np.argmax(prediction, axis=1)
             int_single_prediction = int(int_single_prediction)
             prediction = str(int_single_prediction)
-            print("single predicton: ", int_single_prediction, prediction)
 
             img_PIL = Image.open(image)
             image = img_PIL.copy()
-            print(type(image))
-            # img_PIL.save(os.path.join(app.config['UPLOAD_FOLDER'], "test_to.png"))
             db.save_prediction_db(filename, image, prediction)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed below', "success")
 
             return render_template('image_upload.html', filename=filename, prediction=prediction)
         else:
-            flash('Allowed image types are -> png, jpg, jpeg, gif', "danger")
+            flash('Allowed image types are -> png, jpg, jpeg', "danger")
             return redirect(request.url)
 
     return render_template("image_upload.html")
@@ -134,14 +117,12 @@ def upload_image():
 
 @app.route('/uploads/<filename>')
 def send_uploaded_file(filename=''):
-    from flask import send_from_directory
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
 
 @app.route('/uploads/<prediction>')
 def send_prediction(prediction=''):
     return prediction
-
 
 
 #API JSON Part
@@ -158,62 +139,54 @@ def get_images():
 
 @app.route('/image-predict', methods=['POST'])
 def add_images():
-    json_data = request.get_json()  # Get the POSTed json
+    json_data = request.get_json() # Get the POSTed json
     json_data = json.dumps(json_data)
-    dict_data = json.loads(json_data)  # Convert json to dictionary
+    dict_data = json.loads(json_data) # Convert json to dictionary
 
-    img = dict_data["image"]  # Take out base64# str
+    img = dict_data["image"] # Take out base64# str
     # Convert image data converted to base64 to original binary data# bytes
     img = base64.b64decode(img)
-    img = BytesIO(img)  # _io.Converted to be handled by BytesIO pillow
+    img = BytesIO(img) # _io.Converted to be handled by BytesIO pillow
     img = Image.open(img)
+    img_shape = img.size
     img = img.resize((28, 28))
     img_np = np.array(img)
-    print(type(img))
-    print(img_np.shape)
-    print(type(img_np))
-    print(img_np.ndim)
 
     # all 3 dimensional images will need to be resized to (1, 28, 28, 1) for the model
     if img_np.ndim == 3:
         img_np = img_np.astype("float32") / 255
-        print(img_np.shape)
         img_np = img_np[:, :, 0]
-        print(img_np.shape)
         img_np = np.expand_dims(img_np, -1)
-        print(img_np.shape)
         img_np = np.array([img_np])
-        print(img_np.shape)
 
     # incase image/array is already 2 dimensional (grey scale) we proceed as milestone 1
     if img_np.ndim == 2:
         img_np = img_np.astype("float32") / 255
         img_np = np.expand_dims(img_np, -1)
-        img_np = np.array([img_np])  # Model expects shape (x, 28, 28, 1)
+        # Model expects shape (x, 28, 28, 1)
+        img_np = np.array([img_np])
 
     prediction = loaded_model.predict(img_np)
     int_single_prediction = np.argmax(prediction, axis=1)
     int_single_prediction = int(int_single_prediction)
 
-    img_shape = img.size  # Appropriately process the acquired image
+    filename=dict_data["filename"]
+    
+    db.save_prediction_db(filename,img,int_single_prediction)
 
-    filename = dict_data["filename"]  # Properly process with imagename
-    #Save to db
-    db.save_prediction_db(filename, img_np, int_single_prediction)
-    # img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    # Return the processing result to the client
-
-    response = {
-        "prediction": int_single_prediction,
-        "img_shape": img_shape
-    }
-
-    return jsonify(response)
-
+    
+    response={
+      'prediction':int_single_prediction,
+      'filename':filename,
+      'status':'success',
+      'original_img_shape':img_shape
+      }
+    
+    return jsonify(response), 200, {"Content-Type": "application/json"}
 
 
 if __name__ == "__main__":
     app.run( 
             #for local (non docker use), comment this line out
-            host="0.0.0.0", debug=True
+            host="0.0.0.0", debug=False
     )
