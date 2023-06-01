@@ -24,4 +24,4 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: |
-          docker exec pg_db_container psql -U $POSTGRES_USER -d $POSTGRES_DB -c "SELECT prediction_id, prediction, filename, date FROM public.predictions ORDER BY prediction_id DESC LIMIT 100"
+          docker exec pg_db_container psql -U $POSTGRES_USER -d mnist_prediction -c "SELECT prediction_id, prediction, filename, date FROM public.predictions ORDER BY prediction_id DESC LIMIT 100"
