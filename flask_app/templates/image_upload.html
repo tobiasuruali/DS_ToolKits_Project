@@ -4,25 +4,23 @@
 
 {% block main %}
 
-
 <div class="container">
   <div class="row">
     <div class="col">
-
-      <h1><strong>Upload an Image</strong></h1>
-      <hr>
+      <h1 class="display-4"><strong>Upload an Image</strong></h1>
+      <p class="lead">Use our advanced machine learning model to predict hand-drawn digits.</p>
+      <hr class="my-4">
       <!-- add custom form for image upload -->
       <form action="/upload-image" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-          <label style="color:white"><strong>Upload a hand drawn digit image and our model will predict the exact
-              number.</strong></label>
+          <label><strong>Select an image to upload:</strong></label>
           <div class="custom-file">
             <input type="file" class="custom-file-input" name="image" id="image">
-            <label class="custom-file-label" for="image">Select image...</label>
+            <label class="custom-file-label" for="image">Choose file...</label>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-info">Upload</button>
+        <button type="submit" class="btn btn-info" style="background-color: #18548d;">Upload</button>
 
       </form>
       <!-- Add functionality that form adjusts to filename (Javascript) -->
@@ -35,12 +33,37 @@
       </script>
       <br>
       {% if prediction %}
-      <h2>Our Model predicted: <strong>{{prediction}}</strong></h2>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#predictionModal" style="background-color: #049104;">
+        Show Prediction
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="predictionModal" tabindex="-1" role="dialog" aria-labelledby="predictionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="predictionModalLabel">Prediction</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Our Model predicted: <strong>{{prediction}}</strong>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       {% endif %}
       <br>
       {% if filename %}
       <div>
-        <img src="{{ url_for('send_uploaded_file', filename=filename) }}" class= "img-fluid img-thumbnail" alt="Responsive image">
+        <img src="{{ url_for('send_uploaded_file', filename=filename) }}" class= "img-fluid img-thumbnail"
+          alt="Responsive image">
       </div>
       {% endif %}
     </div>

@@ -11,39 +11,47 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Import our custom stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>{% block title %}{% endblock %}</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4" style="background-color: #006064;">
-      <a class="navbar-brand" href="/">Flask</a>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4" style="background-color: #18548d;">
+      <a class="navbar-brand" href="/">
+        <i class="fa-solid fa-house"></i> Flask
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <a class="nav-link" href="/upload-image">Image Upload</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/upload-image">Image Upload</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
         </ul>
       </div>
+      <span class="navbar-text ml-auto">
+        <i class="fab fa-github"></i> tobiasuruali
+      </span>
     </nav>
 
     <div class="container">
       {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-              <span>{{ message }}</span>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          {% endfor %}
-        {% endif %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        <span>{{ message }}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
       {% endwith %}
     </div>
 
