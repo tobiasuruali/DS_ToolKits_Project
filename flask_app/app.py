@@ -44,11 +44,21 @@ def index():
 
 @app.route("/about", methods=["GET"])
 def about():
-    return """
-    <h1 style='color: red;'>I'm a red H1 heading!</h1>
-    <p>This is a lovely little paragraph</p>
-    <code>Flask is <em>awesome</em></code>
-    """
+    user_agent = request.headers.get("User-Agent", "")
+    if "Mozilla" in user_agent or "Chrome" in user_agent or "Safari" in user_agent:
+        return render_template("about.html")
+    else:
+        data = {
+            "status": "success",
+            "message": "Welcome to our Flask app for predicting hand-drawn digits.",
+            "suggestions": [
+                "Check out our GitHub page to see what we've been working on.",
+                "Read our blog to learn more about our thoughts and ideas.",
+                "Contact us if you have any questions or feedback."
+            ]
+        }
+        return jsonify(data), 200, {"Content-Type": "application/json"}
+
 
 # Website UI Part
 
