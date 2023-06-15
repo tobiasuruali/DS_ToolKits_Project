@@ -51,10 +51,12 @@ def about():
                 "description": "To get started with our application, you are invited to follow these instructions:",
                 "steps": [
                     {
-                        "step1": "Create a POST request with a JSON body. The JSON body should incorporate the following data format:",
-                        "data_format": {
-                            "filename": "(your-filename.png/jpg/jpeg)",
-                            "image": "(Image as Base64 String)"
+                        "step1": {
+                            "description": "Create a POST request with a JSON body. The JSON body should incorporate the following data format:",
+                            "data_format": {
+                                "filename": "(your-filename.png/jpg/jpeg)",
+                                "image": "(Image as Base64 String)"
+                            }
                         }
                     },
                     {
@@ -72,6 +74,7 @@ def about():
             ]
         }
         return jsonify(data), 200, {"Content-Type": "application/json"}
+
 
 
 # Website UI Part
