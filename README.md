@@ -162,7 +162,7 @@ docker-compose -f "docker-compose.yml" up -d --build
 On a browser, go to the IP that the dstoolkits container lists.
 When visiting the page **/upload-image** you can then upload a specific (handwritten digit) image on our form and our model will predict the number.
 
-![Starting Page](https://github.com/tobiasuruali/DS_ToolKits_Project/blob/3ca32159641d84f85fae652b5878042d2b071587/Milestone_Reports/images/starting_page.PNG)
+![Starting Page](Milestone_Reports/images/starting_page_updated.PNG)
 
 
 
