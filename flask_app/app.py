@@ -37,7 +37,7 @@ def allowed_file(filename):
 def index():
     return render_template("index.html")
 
-
+# About and Instructions on how to use the API
 @app.route("/about", methods=["GET"])
 def about():
     user_agent = request.headers.get("User-Agent", "")
@@ -46,14 +46,35 @@ def about():
     else:
         data = {
             "status": "success",
-            "message": "Welcome to our Flask app for predicting hand-drawn digits.",
+            "message": "Welcome to our sophisticated Flask application, designed meticulously by our dedicated team of data scientists. The purpose of this application is to predict digits from hand-drawn images.",
+            "instructions": {
+                "description": "To get started with our application, you are invited to follow these instructions:",
+                "steps": [
+                    {
+                        "step1": {
+                            "description": "Create a POST request with a JSON body. The JSON body should incorporate the following data format:",
+                            "data_format": {
+                                "filename": "(your-filename.png/jpg/jpeg)",
+                                "image": "(Image as Base64 String)"
+                            }
+                        }
+                    },
+                    {
+                        "step2": "Send your request to the /image-predict endpoint of our application."
+                    },
+                    {
+                        "step3": "Alternatively, you can use the 'Upload Image' button on our website to upload your image directly through the browser."
+                    }
+                ]
+            },
             "suggestions": [
-                "Check out our GitHub page to see what we've been working on.",
-                "Read our blog to learn more about our thoughts and ideas.",
-                "Contact us if you have any questions or feedback."
+                "You can explore our Github page to get insight into our work and contributions.",
+                "Stay informed about our latest thoughts, ideas, and innovations by visiting our blog.",
+                "We value your feedback and queries. Please feel free to contact us anytime."
             ]
         }
         return jsonify(data), 200, {"Content-Type": "application/json"}
+
 
 
 # Website UI Part
